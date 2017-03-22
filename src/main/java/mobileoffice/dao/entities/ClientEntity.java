@@ -1,6 +1,6 @@
 package mobileoffice.dao.entities;
 
-import base.contracts.IHasLongId;
+import base.contracts.HasLongId;
 
 import java.sql.Date;
 import java.util.Collection;
@@ -8,7 +8,7 @@ import java.util.Collection;
 /**
  * Created by kiril_000 on 22.03.2017.
  */
-public class ClientEntity implements IHasLongId {
+public class ClientEntity implements HasLongId {
     private long id;
     private String name;
     private String lastName;

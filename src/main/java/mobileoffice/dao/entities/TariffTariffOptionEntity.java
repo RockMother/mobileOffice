@@ -1,11 +1,11 @@
 package mobileoffice.dao.entities;
 
-import base.contracts.IHasLongId;
+import base.contracts.HasLongId;
 
 /**
  * Created by kiril_000 on 22.03.2017.
  */
-public class TariffTariffOptionEntity implements IHasLongId {
+public class TariffTariffOptionEntity implements HasLongId {
     private long id;
     private Long tariffId;
     private Long tariffOptionId;

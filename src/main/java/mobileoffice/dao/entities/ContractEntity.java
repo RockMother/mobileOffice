@@ -1,13 +1,13 @@
 package mobileoffice.dao.entities;
 
-import base.contracts.IHasLongId;
+import base.contracts.HasLongId;
 
 import java.util.Collection;
 
 /**
  * Created by kiril_000 on 22.03.2017.
  */
-public class ContractEntity implements IHasLongId {
+public class ContractEntity implements HasLongId {
     private long id;
     private String number;
     private long tariffId;
