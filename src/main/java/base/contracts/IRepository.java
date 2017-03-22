@@ -4,6 +4,6 @@ import base.dao.entities.BaseEntity;
 
 import java.util.List;
 
-public interface IRepository<TEntity extends BaseEntity> {
+public interface IRepository<TEntity extends IHasLongId> {
     List<TEntity> GetAllEntities();
 }

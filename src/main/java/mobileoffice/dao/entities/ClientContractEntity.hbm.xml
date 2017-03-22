@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="mobileoffice.dao.entities.ClientContractEntity" table="client_contract" schema="mobileoffice">
+        <id name="id" column="id"/>
+        <property name="clientId" column="client_id"/>
+        <property name="contractId" column="contract_id"/>
+        <many-to-one name="clientByClientId" class="mobileoffice.dao.entities.ClientEntity">
+            <column name="client_id"/>
+        </many-to-one>
+        <many-to-one name="contractByContractId" class="mobileoffice.dao.entities.ContractEntity">
+            <column name="contract_id"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
