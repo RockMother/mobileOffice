@@ -1,13 +1,21 @@
 package base.dao.repositories;
 
-import base.contracts.HasLongId;
-import base.contracts.Repository;
+import base.dao.contracts.HasLongId;
+import base.dao.contracts.Repository;
+import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class RepositoryImpl<T extends HasLongId> implements Repository<T> {
-    public List<T> getAllEntities(){
+
+    SessionFactory sessionFactory;
+
+    public RepositoryImpl(SessionFactory sessionFactory){
+        this.sessionFactory = sessionFactory;
+    }
+
+    public List<T> getAll(){
         return new ArrayList<T>();
     }
 

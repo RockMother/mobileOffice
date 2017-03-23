@@ -1,6 +1,6 @@
 package ${settings.entityPackageName};
 
-import base.contracts.HasLongId;
+import base.dao.contracts.HasLongId;
 
 import java.util.Collection;
 
