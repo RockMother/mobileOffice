@@ -26,8 +26,8 @@ public class TableColumnsExtractor extends DbDataReader<Column> {
     }
 
     protected Column createModel(ResultSet resultSet) throws SQLException {
-        //TABLE_NAME, DATA_TYPE, DATA_TYPE
+        //TABLE_NAME, COLUMN_NAME, DATA_TYP, IsKEY
         return new Column(resultSet.getString("COLUMN_NAME"),
-                typeMapper.convertMysqlTypeToJavaType(resultSet.getString("DATA_TYPE")), resultSet.getBoolean("IsKEY"));
+                typeMapper.convertMysqlTypeToJavaType(resultSet.getString("DATA_TYPE")), resultSet.getBoolean("IsKEY"), false);
     }
 }

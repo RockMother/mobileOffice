@@ -9,5 +9,11 @@
         
         <property name="number" column="number"/>
         <property name="tariffId" column="tariff_id"/>
+        <set name="clientContractRspsById" inverse="true">
+            <key>
+                <column name="contract_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="mobileoffice.dao.entities.ClientContractRsp"/>
+         </set>
     </class>
 </hibernate-mapping>

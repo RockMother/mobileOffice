@@ -9,5 +9,17 @@
         
         <property name="name" column="name"/>
         <property name="price" column="price"/>
+        <set name="contractsById" inverse="true">
+            <key>
+                <column name="tariff_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="mobileoffice.dao.entities.Contract"/>
+         </set>
+        <set name="tariffTariffOptionsById" inverse="true">
+            <key>
+                <column name="tariff_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="mobileoffice.dao.entities.TariffTariffOption"/>
+         </set>
     </class>
 </hibernate-mapping>

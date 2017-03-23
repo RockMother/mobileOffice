@@ -10,4 +10,8 @@ public class DbQueries {
             "DATA_TYPE, " +
             "CASE WHEN COLUMN_KEY = \"PRI\" THEN 1 ELSE 0 END AS IsKEY " +
             "from information_schema.COLUMNS where TABLE_SCHEMA = '%s' AND TABLE_NAME = '%s'";
+   public static final String ForeignKeys = "SELECT \n" +
+            "  TABLE_NAME,COLUMN_NAME,CONSTRAINT_NAME, REFERENCED_TABLE_NAME,REFERENCED_COLUMN_NAME\n" +
+            "FROM\n" +
+            "INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE TABLE_SCHEMA = '%s' AND CONSTRAINT_NAME != 'PRIMARY'";
 }

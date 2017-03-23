@@ -10,20 +10,30 @@ import java.util.List;
  */
 public class Table extends BaseNamedObject {
     private List<Column> columns;
+    private List<ForeignKey> foreignKeys;
     private String schemaName;
 
     public Table(String name, String schemaName) {
         super(name);
         this.schemaName = schemaName;
         columns = new ArrayList<Column>();
+        foreignKeys = new ArrayList<ForeignKey>();
     }
 
     public void addColumns(List<Column> columns){
         this.columns.addAll(columns);
     }
 
+    public void addForeignKey(ForeignKey foreignKey){
+        this.foreignKeys.add(foreignKey);
+    }
+
     public List<Column> getColumns() {
         return columns;
+    }
+
+    public List<ForeignKey> getForeignKeys() {
+        return foreignKeys;
     }
 
     public String getSchemaName() {

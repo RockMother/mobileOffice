@@ -1,22 +1,24 @@
 package generation;
 
+import config.GenerationSettings;
+
 /**
  * Created by kisc on 3/23/2017.
  */
 public class GenerationModel<T> {
     T model;
-    private String packageName;
+    private GenerationSettings settings;
 
-    public GenerationModel(T model, String packageName){
+    public GenerationModel(T model, GenerationSettings settings){
         this.model = model;
-        this.packageName = packageName;
+        this.settings = settings;
     }
 
     public T getModel() {
         return model;
     }
 
-    public String getPackageName() {
-        return packageName;
+    public GenerationSettings getSettings() {
+        return settings;
     }
 }

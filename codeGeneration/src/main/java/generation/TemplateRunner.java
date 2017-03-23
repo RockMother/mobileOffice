@@ -25,19 +25,23 @@ public class TemplateRunner {
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         ClassTemplateLoader ctl = new ClassTemplateLoader(getClass(), "/templates");
         cfg.setTemplateLoader(ctl);
+        Template entityTemplate = cfg.getTemplate("entity.tpl");
+        Template mappingTemplate = cfg.getTemplate("mapping.tpl");
+        Template repositoryTemplate = cfg.getTemplate("repositoryImpl.tpl");
+        Template repositoryInterfaceTemplate = cfg.getTemplate("repository.tpl");
         for (Table table: model.getTables()){
-            GenerationModel<Table> generationModel = new GenerationModel<Table>(table, settings.getEntityPackageName());
-            Template entityTemplate = cfg.getTemplate("entity.tpl");
-            Template mappingTemplate = cfg.getTemplate("mapping.tpl");
-            processTemplate(entityTemplate, generationModel, table.getClassName() + ".java");
-            processTemplate(mappingTemplate, generationModel, table.getClassName() + ".hbm.xml");
+            GenerationModel<Table> generationModel = new GenerationModel<Table>(table, settings);
+            processTemplate(entityTemplate, generationModel, settings.getEntityPackageName(), table.getClassName() + ".java");
+            processTemplate(mappingTemplate, generationModel, settings.getEntityPackageName(), table.getClassName() + ".hbm.xml");
+            processTemplate(repositoryTemplate, generationModel, settings.getRepositoryPackageName(),table.getClassName() + "RepositoryImpl.java");
+            processTemplate(repositoryInterfaceTemplate, generationModel, settings.getRepositoryInterfacePackageName(),table.getClassName() + "Repository.java");
         }
     }
 
-    private <T> void processTemplate(Template template, T model, String fileName) throws IOException, TemplateException {
+    private void processTemplate(Template template, GenerationModel model, String packageName, String fileName) throws IOException, TemplateException {
 
         String root = settings.getProjectRoot();
-        String relativePath = settings.getEntityPackageName().replace(".", "\\");
+        String relativePath = packageName.replace(".", "\\");
         File file = new File(root + relativePath + "\\" + fileName);
         //file.getParentFile().mkdirs();
         if (file.exists()){

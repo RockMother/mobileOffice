@@ -14,5 +14,11 @@
         <property name="address" column="address"/>
         <property name="email" column="email"/>
         <property name="passwordHash" column="password_hash"/>
+        <set name="clientContractRspsById" inverse="true">
+            <key>
+                <column name="client_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="mobileoffice.dao.entities.ClientContractRsp"/>
+         </set>
     </class>
 </hibernate-mapping>
