@@ -6,7 +6,7 @@
 
     <class name="mobileoffice.dao.entities.Tariff" table="tariff" schema="mobileoffice">
         <id name="id" column="id"/>
-        <property name="id" column="id"/>
+        
         <property name="name" column="name"/>
         <property name="price" column="price"/>
     </class>

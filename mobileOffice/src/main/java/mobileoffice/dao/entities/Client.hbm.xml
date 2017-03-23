@@ -6,7 +6,7 @@
 
     <class name="mobileoffice.dao.entities.Client" table="client" schema="mobileoffice">
         <id name="id" column="id"/>
-        <property name="id" column="id"/>
+        
         <property name="name" column="name"/>
         <property name="lastName" column="last_name"/>
         <property name="birthdate" column="birthdate"/>

@@ -5,5 +5,9 @@ package mysql;
  */
 public class DbQueries {
     public static final String TableQuery = "select TABLE_NAME from information_schema.TABLES where TABLE_SCHEMA = '%s'";
-    public static final String ColumnQuery = "select TABLE_NAME, COLUMN_NAME, DATA_TYPE from information_schema.COLUMNS where TABLE_SCHEMA = '%s' AND TABLE_NAME = '%s'";
+    public static final String ColumnQuery = "select TABLE_NAME, " +
+            "COLUMN_NAME, " +
+            "DATA_TYPE, " +
+            "CASE WHEN COLUMN_KEY = \"PRI\" THEN 1 ELSE 0 END AS IsKEY " +
+            "from information_schema.COLUMNS where TABLE_SCHEMA = '%s' AND TABLE_NAME = '%s'";
 }
