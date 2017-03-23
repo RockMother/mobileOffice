@@ -5,6 +5,7 @@ package config;
  */
 public class GenerationSettings {
     private final String projectRoot = "C:\\Projects\\mobileOffice\\mobileOffice\\src\\main\\java\\";
+    private final String resourceRoot = "C:\\Projects\\mobileOffice\\mobileOffice\\src\\main\\resources\\";
     private final String entityPackageName = "mobileoffice.dao.entities";
     private final String repositoryPackageName = "mobileoffice.dao.repositories";
     private final String repositoryInterfacePackageName = "mobileoffice.dao.contracts";
@@ -23,5 +24,9 @@ public class GenerationSettings {
 
     public String getRepositoryInterfacePackageName() {
         return repositoryInterfacePackageName;
+    }
+
+    public String getResourceRoot() {
+        return resourceRoot;
     }
 }
