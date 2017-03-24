@@ -9,6 +9,7 @@ public class GenerationSettings {
     private final String entityPackageName = "mobileoffice.dao.entities";
     private final String repositoryPackageName = "mobileoffice.dao.repositories";
     private final String repositoryInterfacePackageName = "mobileoffice.dao.contracts";
+    private final String utilsPackageName = "mobileoffice.utils";
 
     public String getProjectRoot() {
         return projectRoot;
@@ -16,6 +17,10 @@ public class GenerationSettings {
 
     public String getEntityPackageName() {
         return entityPackageName;
+    }
+
+    public String getEntityFolder() {
+        return entityPackageName.replaceAll("\\.", "/");
     }
 
     public String getRepositoryPackageName() {
@@ -28,5 +33,9 @@ public class GenerationSettings {
 
     public String getResourceRoot() {
         return resourceRoot;
+    }
+
+    public String getUtilsPackageName() {
+        return utilsPackageName;
     }
 }

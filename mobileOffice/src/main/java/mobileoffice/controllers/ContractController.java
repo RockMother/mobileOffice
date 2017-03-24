@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by kisc on 3/23/2017.
  */
 @Controller
+@RequestMapping("/contract")
 public class ContractController {
 
     private ContractService contractService;
@@ -18,7 +19,7 @@ public class ContractController {
         this.contractService = contractService;
     }
 
-    @RequestMapping(value = "/contract", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String get(Model model){
         model.addAttribute("contracts", contractService.getAll());
         return "contract";

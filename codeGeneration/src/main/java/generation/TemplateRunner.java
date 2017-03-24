@@ -31,6 +31,7 @@ public class TemplateRunner {
         Template repositoryTemplate = cfg.getTemplate("repositoryImpl.tpl");
         Template repositoryInterfaceTemplate = cfg.getTemplate("repository.tpl");
         Template beansDaoTemplate = cfg.getTemplate("beans.dao.tpl");
+        Template hibernateUtilsTemplate = cfg.getTemplate("hibernateUtils.tpl");
         for (Table table: model.getTables()){
             GenerationModel<Table> generationModel = new GenerationModel<Table>(table, settings);
             processTemplateToPackage(entityTemplate, generationModel, settings.getEntityPackageName(), table.getClassName() + ".java");
@@ -41,6 +42,7 @@ public class TemplateRunner {
 
         GenerationModel<List<Table>> generationModel = new GenerationModel<List<Table>>(model.getTables(), settings);
         processTemplateToResources(beansDaoTemplate, generationModel, "beans.dao.xml");
+        processTemplateToResources(hibernateUtilsTemplate, generationModel, "entitymappings.xml");
     }
 
 

@@ -7,7 +7,7 @@ import base.dao.contracts.Repository;
 
 import java.util.List;
 
-public abstract class BaseService<R extends Repository<T>, T extends HasLongId> implements Service {
+public abstract class BaseService<R extends Repository<T>, T extends HasLongId> implements Service<R, T> {
 
     private R repository;
 

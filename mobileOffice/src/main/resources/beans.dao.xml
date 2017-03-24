@@ -5,11 +5,11 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-        <bean id="clientRepositoryImpl" class="mobileoffice.dao.repositories.ClientRepositoryImpl"/>
-    <bean id="clientContractRspRepositoryImpl" class="mobileoffice.dao.repositories.ClientContractRspRepositoryImpl"/>
-    <bean id="contractRepositoryImpl" class="mobileoffice.dao.repositories.ContractRepositoryImpl"/>
-    <bean id="tariffRepositoryImpl" class="mobileoffice.dao.repositories.TariffRepositoryImpl"/>
-    <bean id="tariffOptionRspRepositoryImpl" class="mobileoffice.dao.repositories.TariffOptionRspRepositoryImpl"/>
-    <bean id="tariffTariffOptionRepositoryImpl" class="mobileoffice.dao.repositories.TariffTariffOptionRepositoryImpl"/>
+    <bean id="clientRepositoryImpl" class="mobileoffice.dao.repositories.ClientRepositoryImpl"/>
+<bean id="clientContractRspRepositoryImpl" class="mobileoffice.dao.repositories.ClientContractRspRepositoryImpl"/>
+<bean id="contractRepositoryImpl" class="mobileoffice.dao.repositories.ContractRepositoryImpl"/>
+<bean id="tariffRepositoryImpl" class="mobileoffice.dao.repositories.TariffRepositoryImpl"/>
+<bean id="tariffOptionRspRepositoryImpl" class="mobileoffice.dao.repositories.TariffOptionRspRepositoryImpl"/>
+<bean id="tariffTariffOptionRepositoryImpl" class="mobileoffice.dao.repositories.TariffTariffOptionRepositoryImpl"/>
 
 </beans>
