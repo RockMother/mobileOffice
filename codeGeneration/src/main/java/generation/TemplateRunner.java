@@ -26,23 +26,29 @@ public class TemplateRunner {
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         ClassTemplateLoader ctl = new ClassTemplateLoader(getClass(), "/templates");
         cfg.setTemplateLoader(ctl);
-        Template entityTemplate = cfg.getTemplate("entity.tpl");
-        Template mappingTemplate = cfg.getTemplate("mapping.tpl");
-        Template repositoryTemplate = cfg.getTemplate("repositoryImpl.tpl");
-        Template repositoryInterfaceTemplate = cfg.getTemplate("repository.tpl");
-        Template beansDaoTemplate = cfg.getTemplate("beans.dao.tpl");
-        Template hibernateUtilsTemplate = cfg.getTemplate("hibernateUtils.tpl");
+        Template entityTemplate = cfg.getTemplate("dao/entity.tpl");
+        Template mappingTemplate = cfg.getTemplate("dao/mapping.tpl");
+        Template repositoryTemplate = cfg.getTemplate("dao/repositoryImpl.tpl");
+        Template repositoryInterfaceTemplate = cfg.getTemplate("dao/repository.tpl");
+        Template beansDaoTemplate = cfg.getTemplate("initialization/beans.dao.tpl");
+        Template hibernateUtilsTemplate = cfg.getTemplate("initialization/hibernateUtils.tpl");
+        Template dataServiceImplTemplate = cfg.getTemplate("business/dataServiceImpl.tpl");
+        Template dataServiceTemplate = cfg.getTemplate("business/dataService.tpl");
         for (Table table: model.getTables()){
             GenerationModel<Table> generationModel = new GenerationModel<Table>(table, settings);
             processTemplateToPackage(entityTemplate, generationModel, settings.getEntityPackageName(), table.getClassName() + ".java");
-            processTemplateToPackage(mappingTemplate, generationModel, settings.getEntityPackageName(), table.getClassName() + ".hbm.xml");
+            processTemplateToResources(mappingTemplate, generationModel, "hibernate\\" + table.getClassName() + ".hbm.xml");
             processTemplateToPackage(repositoryTemplate, generationModel, settings.getRepositoryPackageName(), table.getClassName() + "RepositoryImpl.java");
             processTemplateToPackage(repositoryInterfaceTemplate, generationModel, settings.getRepositoryInterfacePackageName(), table.getClassName() + "Repository.java");
+
+            processTemplateToPackage(dataServiceImplTemplate, generationModel, settings.getDataServicesPackageName(), table.getClassName() + "DataServiceImpl.java");
+            processTemplateToPackage(dataServiceTemplate, generationModel, settings.getDataServiceInterfacesPackageName(), table.getClassName() + "DataService.java");
+
         }
 
         GenerationModel<List<Table>> generationModel = new GenerationModel<List<Table>>(model.getTables(), settings);
         processTemplateToResources(beansDaoTemplate, generationModel, "beans.dao.xml");
-        processTemplateToResources(hibernateUtilsTemplate, generationModel, "entitymappings.xml");
+        processTemplateToPackage(hibernateUtilsTemplate, generationModel, settings.getUtilsPackageName(), "HibernateUtil.java");
     }
 
 

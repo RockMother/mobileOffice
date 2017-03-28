@@ -10,6 +10,8 @@ public class GenerationSettings {
     private final String repositoryPackageName = "mobileoffice.dao.repositories";
     private final String repositoryInterfacePackageName = "mobileoffice.dao.contracts";
     private final String utilsPackageName = "mobileoffice.utils";
+    private String dataServicesPackageName = "mobileoffice.business.services.data";
+    private String dataServiceInterfacesPackageName = "mobileoffice.business.contracts.data";
 
     public String getProjectRoot() {
         return projectRoot;
@@ -37,5 +39,12 @@ public class GenerationSettings {
 
     public String getUtilsPackageName() {
         return utilsPackageName;
+    }
+    public String getDataServicesPackageName() {
+        return dataServicesPackageName;
+    }
+
+    public String getDataServiceInterfacesPackageName() {
+        return dataServiceInterfacesPackageName;
     }
 }

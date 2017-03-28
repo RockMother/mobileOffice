@@ -20,7 +20,7 @@ public class ContractController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String get(Model model){
+    public String get(Model model) throws Exception {
         model.addAttribute("contracts", contractService.getAll());
         return "contract";
     }
