@@ -14,9 +14,9 @@ public class HibernateUtil {
             cfg.addResource("hibernate/Client.hbm.xml");
             cfg.addResource("hibernate/ClientContractRsp.hbm.xml");
             cfg.addResource("hibernate/Contract.hbm.xml");
+            cfg.addResource("hibernate/Options.hbm.xml");
             cfg.addResource("hibernate/Tariff.hbm.xml");
-            cfg.addResource("hibernate/TariffOptionRsp.hbm.xml");
-            cfg.addResource("hibernate/TariffTariffOption.hbm.xml");
+            cfg.addResource("hibernate/TariffOptionsRsp.hbm.xml");
             sessionFactory = cfg.buildSessionFactory();
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);

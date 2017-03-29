@@ -34,6 +34,7 @@ public class TemplateRunner {
         Template hibernateUtilsTemplate = cfg.getTemplate("initialization/hibernateUtils.tpl");
         Template dataServiceImplTemplate = cfg.getTemplate("business/dataServiceImpl.tpl");
         Template dataServiceTemplate = cfg.getTemplate("business/dataService.tpl");
+        Template dataServiceBeansTemplate = cfg.getTemplate("business/beans.dataservices.tpl");
         for (Table table: model.getTables()){
             GenerationModel<Table> generationModel = new GenerationModel<Table>(table, settings);
             processTemplateToPackage(entityTemplate, generationModel, settings.getEntityPackageName(), table.getClassName() + ".java");
@@ -48,6 +49,7 @@ public class TemplateRunner {
 
         GenerationModel<List<Table>> generationModel = new GenerationModel<List<Table>>(model.getTables(), settings);
         processTemplateToResources(beansDaoTemplate, generationModel, "beans.dao.xml");
+        processTemplateToResources(dataServiceBeansTemplate, generationModel, "beans.dataservices.xml");
         processTemplateToPackage(hibernateUtilsTemplate, generationModel, settings.getUtilsPackageName(), "HibernateUtil.java");
     }
 

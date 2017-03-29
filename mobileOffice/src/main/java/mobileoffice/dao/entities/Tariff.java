@@ -14,7 +14,7 @@ public class Tariff implements HasLongId, Serializable {
     private String name;
     private Float price;
     private Collection<Contract> contractsById;
-    private Collection<TariffTariffOption> tariffTariffOptionsById;
+    private Collection<TariffOptionsRsp> tariffOptionsRspsById;
 
     public long getId(){
         return this.id;
@@ -44,11 +44,11 @@ public class Tariff implements HasLongId, Serializable {
     public void setContractsById (Collection<Contract> contractsById) {
         this.contractsById = contractsById;
     }
-    public Collection<TariffTariffOption> getTariffTariffOptionsById(){
-        return this.tariffTariffOptionsById;
+    public Collection<TariffOptionsRsp> getTariffOptionsRspsById(){
+        return this.tariffOptionsRspsById;
     }
 
-    public void setTariffTariffOptionsById (Collection<TariffTariffOption> tariffTariffOptionsById) {
-        this.tariffTariffOptionsById = tariffTariffOptionsById;
+    public void setTariffOptionsRspsById (Collection<TariffOptionsRsp> tariffOptionsRspsById) {
+        this.tariffOptionsRspsById = tariffOptionsRspsById;
     }
 }

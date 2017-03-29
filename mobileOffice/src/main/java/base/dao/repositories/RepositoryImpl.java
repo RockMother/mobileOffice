@@ -2,7 +2,7 @@ package base.dao.repositories;
 
 import base.dao.contracts.HasLongId;
 import base.dao.contracts.Repository;
-import mobileoffice.dao.HibernateUtil;
+import mobileoffice.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 

@@ -8,8 +8,8 @@
     <bean id="clientRepository" class="mobileoffice.dao.repositories.ClientRepositoryImpl"/>
 <bean id="clientContractRspRepository" class="mobileoffice.dao.repositories.ClientContractRspRepositoryImpl"/>
 <bean id="contractRepository" class="mobileoffice.dao.repositories.ContractRepositoryImpl"/>
+<bean id="optionsRepository" class="mobileoffice.dao.repositories.OptionsRepositoryImpl"/>
 <bean id="tariffRepository" class="mobileoffice.dao.repositories.TariffRepositoryImpl"/>
-<bean id="tariffOptionRspRepository" class="mobileoffice.dao.repositories.TariffOptionRspRepositoryImpl"/>
-<bean id="tariffTariffOptionRepository" class="mobileoffice.dao.repositories.TariffTariffOptionRepositoryImpl"/>
+<bean id="tariffOptionsRspRepository" class="mobileoffice.dao.repositories.TariffOptionsRspRepositoryImpl"/>
 
 </beans>

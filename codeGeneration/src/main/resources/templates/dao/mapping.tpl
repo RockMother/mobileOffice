@@ -15,7 +15,7 @@
          </set>
         </#if>
         <#if !key.isOneToMany()>
-            <many-to-one name="${key.keyColumnName}" not-found="ignore" class="${settings.entityPackageName}.${key.table.className}">
+            <many-to-one name="${key.keyColumnName}" insert="false" update="false" not-found="ignore" class="${settings.entityPackageName}.${key.table.className}">
                 <column name="${key.refColumn.name}"/>
             </many-to-one>
         </#if>

@@ -11,11 +11,11 @@
             </key>
             <one-to-many not-found="ignore" class="mobileoffice.dao.entities.Contract"/>
          </set>
-        <set name="tariffTariffOptionsById" inverse="true">
+        <set name="tariffOptionsRspsById" inverse="true">
             <key>
                 <column name="tariff_id"/>
             </key>
-            <one-to-many not-found="ignore" class="mobileoffice.dao.entities.TariffTariffOption"/>
+            <one-to-many not-found="ignore" class="mobileoffice.dao.entities.TariffOptionsRsp"/>
          </set>
     </class>
 </hibernate-mapping>

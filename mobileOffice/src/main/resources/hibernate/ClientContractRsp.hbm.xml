@@ -5,10 +5,10 @@
         
         <property name="clientId" column="client_id"/>
         <property name="contractId" column="contract_id"/>
-            <many-to-one name="clientByClientId" not-found="ignore" class="mobileoffice.dao.entities.Client">
+            <many-to-one name="clientByClientId" insert="false" update="false" not-found="ignore" class="mobileoffice.dao.entities.Client">
                 <column name="client_id"/>
             </many-to-one>
-            <many-to-one name="contractByContractId" not-found="ignore" class="mobileoffice.dao.entities.Contract">
+            <many-to-one name="contractByContractId" insert="false" update="false" not-found="ignore" class="mobileoffice.dao.entities.Contract">
                 <column name="contract_id"/>
             </many-to-one>
     </class>
