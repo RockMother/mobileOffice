@@ -5,6 +5,7 @@ import base.dao.contracts.Repository;
 import mobileoffice.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -30,6 +31,28 @@ public abstract class RepositoryImpl<T extends HasLongId> implements Repository<
             throw ex;
         }
         finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+    }
+
+    public List<T> findByParameters(String searchQuery, List<Object> parameters) throws Exception {
+        Session session = null;
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            session = sessionFactory.openSession();
+            String query = String.format("from %s WHERE %s", entityType.getSimpleName(), searchQuery);
+            Query sessionQuery = session.createQuery(query);
+            for (int i = 0; i < parameters.size(); i++) {
+                Object parameter = parameters.get(i);
+                sessionQuery.setParameter(i, parameter);
+            }
+            return sessionQuery.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
             if (session != null && session.isOpen()) {
                 session.close();
             }

@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sec="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/security
+   http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <sec:http authentication-manager-ref="daoManager">
+        <sec:intercept-url pattern="/" access="permitAll"/>
+        <sec:intercept-url pattern="/login" access="permitAll"/>
+        <sec:intercept-url pattern="/login-success" access="hasRole('ROLE_ADMIN')"/>
+
+        <sec:form-login
+                login-processing-url="/j_spring_security_check"
+                login-page="/login.jsp"
+                default-target-url="/options"
+                authentication-failure-url="/login?error"
+                username-parameter="username"
+                password-parameter="password" />
+        <sec:logout logout-success-url="/login?logout" />
+        <!-- enable csrf protection -->
+        <sec:csrf disabled="true"/>
+    </sec:http>
+
+    <bean id="userService" class="mobileoffice.business.services.UserDetailsServiceImpl">
+        <constructor-arg ref="usersRepository"/>
+        <constructor-arg ref="authoritiesRepository"/>
+    </bean>
+
+    <sec:authentication-manager id="daoManager">
+        <sec:authentication-provider user-service-ref="userService"></sec:authentication-provider>
+    </sec:authentication-manager>
+</beans>

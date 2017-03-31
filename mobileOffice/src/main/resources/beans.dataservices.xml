@@ -5,6 +5,9 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
+<bean id="authoritiesDataService" class="mobileoffice.business.services.data.AuthoritiesDataServiceImpl">
+    <constructor-arg ref="authoritiesRepository"/>
+</bean>
 <bean id="clientDataService" class="mobileoffice.business.services.data.ClientDataServiceImpl">
     <constructor-arg ref="clientRepository"/>
 </bean>
@@ -22,6 +25,9 @@
 </bean>
 <bean id="tariffOptionsRspDataService" class="mobileoffice.business.services.data.TariffOptionsRspDataServiceImpl">
     <constructor-arg ref="tariffOptionsRspRepository"/>
+</bean>
+<bean id="usersDataService" class="mobileoffice.business.services.data.UsersDataServiceImpl">
+    <constructor-arg ref="usersRepository"/>
 </bean>
 
 </beans>

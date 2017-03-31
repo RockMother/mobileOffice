@@ -11,12 +11,14 @@ public class HibernateUtil {
     static {
         try {
             Configuration cfg = new Configuration().configure("hibernate/hibernate.cfg.xml");
+            cfg.addResource("hibernate/Authorities.hbm.xml");
             cfg.addResource("hibernate/Client.hbm.xml");
             cfg.addResource("hibernate/ClientContractRsp.hbm.xml");
             cfg.addResource("hibernate/Contract.hbm.xml");
             cfg.addResource("hibernate/Options.hbm.xml");
             cfg.addResource("hibernate/Tariff.hbm.xml");
             cfg.addResource("hibernate/TariffOptionsRsp.hbm.xml");
+            cfg.addResource("hibernate/Users.hbm.xml");
             sessionFactory = cfg.buildSessionFactory();
         } catch (Throwable ex) {
             throw new ExceptionInInitializerError(ex);
