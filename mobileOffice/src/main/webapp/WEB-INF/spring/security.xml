@@ -13,8 +13,8 @@
 
         <sec:form-login
                 login-processing-url="/j_spring_security_check"
-                login-page="/login.jsp"
-                default-target-url="/options"
+                login-page="/WEB-INF/views/login.jsp"
+                default-target-url="/index"
                 authentication-failure-url="/login?error"
                 username-parameter="username"
                 password-parameter="password" />

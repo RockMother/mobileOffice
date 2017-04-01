@@ -59,45 +59,69 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             } catch (Exception e){
                 e.printStackTrace();
             }
-            final List<String> finalRoles = roles;
-            return new UserDetails() {
-                public Collection<? extends GrantedAuthority> getAuthorities() {
-                    List<GrantedAuthority> result = new ArrayList<GrantedAuthority>();
-                    for (final String role: finalRoles){
-                        result.add(new GrantedAuthority() {
-                            public String getAuthority() {
-                                return role;
-                            }
-                        });
-                    }
-                    return result;
-                }
+            return createUserDetails(user, roles);
 
-                public String getPassword() {
-                    return user.getPassword();
-                }
-
-                public String getUsername() {
-                    return user.getUserName();
-                }
-
-                public boolean isAccountNonExpired() {
-                    return true;
-                }
-
-                public boolean isAccountNonLocked() {
-                    return true;
-                }
-
-                public boolean isCredentialsNonExpired() {
-                    return true;
-                }
-
-                public boolean isEnabled() {
-                    return user.getEnabled();
-                }
-            };
         }
         throw new UsernameNotFoundException(s);
+    }
+
+    private UserDetails createUserDetails(Users user, List<String> roles) {
+        return new UserDetailsImpl(user, roles);
+    }
+
+    class UserDetailsImpl implements UserDetails {
+
+        private final Users user;
+        private final List<GrantedAuthority> authorities;
+
+        UserDetailsImpl(Users user, List<String> roles) {
+            this.user = user;
+            this.authorities = new ArrayList<GrantedAuthority>();
+            for (final String role : roles) {
+                this.authorities.add(new GrantedAuthorityImpl(role));
+            }
+        }
+
+        public Collection<? extends GrantedAuthority> getAuthorities() {
+            return authorities;
+        }
+
+        public String getPassword() {
+            return user.getPassword();
+        }
+
+        public String getUsername() {
+            return user.getUserName();
+        }
+
+        public boolean isAccountNonExpired() {
+            return true;
+        }
+
+        public boolean isAccountNonLocked() {
+            return true;
+        }
+
+        public boolean isCredentialsNonExpired() {
+            return true;
+        }
+
+        public boolean isEnabled() {
+            return user.getEnabled();
+        }
+    }
+
+    class GrantedAuthorityImpl implements GrantedAuthority {
+
+        private String authority;
+
+        GrantedAuthorityImpl(String authority){
+
+            this.authority = authority;
+        }
+
+        public String getAuthority() {
+            return authority;
+        }
     }
 }
