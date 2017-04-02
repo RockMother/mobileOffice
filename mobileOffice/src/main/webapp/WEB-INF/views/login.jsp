@@ -1,33 +1,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: kisc
-  Date: 3/30/2017
-  Time: 12:16 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title></title>
+    <title>Login to mobile office</title>
+    <link type="text/css" rel="stylesheet" href="/resources/main.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/login.css"/>
 </head>
 <body>
-
-<form name='loginForm' action="j_spring_security_check" method='POST'>
-  <table>
-    <tr>
-      <td>User:</td>
-      <td><input type='text' name='username' value=''></td>
-    </tr>
-    <tr>
-      <td>Password:</td>
-      <td><input type='password' name='password' /></td>
-    </tr>
-    <tr>
-      <td colspan='2'><input name="submit" type="submit" value="submit" /></td>
-    </tr>
-  </table>
-</form>
+<div class="login-form-wrapper">
+    <form class="login-form" name='loginForm' action="j_spring_security_check" method='POST'>
+        <div class="form-inner-wrapper">
+            <div class="input-container">
+                <div class="label">User:</div>
+                <div class="input-wrapper"><input type='text' name='username' value=''></div>
+            </div>
+            <div class="input-container">
+                <div class="label">Password:</div>
+                <div class="input-wrapper"><input type='password' name='password'/></div>
+            </div>
+            <div class="input-container">
+                <div class="login-button"><input name="submit" type="submit" value="Login"/></div>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>
 
