@@ -79,19 +79,13 @@ public abstract class RepositoryImpl<T extends HasLongId> implements Repository<
 
     public T create(T model) throws Exception {
         Session session = null;
-        Transaction transaction = null;
         try {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             session = sessionFactory.openSession();
-            transaction = session.beginTransaction();
             session.save(model);
-            transaction.commit();
             return model;
         } catch (Exception e) {
             e.printStackTrace();
-            if (transaction != null) {
-                transaction.rollback();
-            }
             throw e;
         } finally {
             if (session != null && session.isOpen()) {

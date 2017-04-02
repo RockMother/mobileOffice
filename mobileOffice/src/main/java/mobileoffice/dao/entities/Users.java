@@ -15,6 +15,7 @@ public class Users implements HasLongId, Serializable {
     private String password;
     private boolean enabled;
     private Collection<Authorities> authoritiessById;
+    private Collection<Client> clientsById;
 
     public long getId(){
         return this.id;
@@ -50,5 +51,12 @@ public class Users implements HasLongId, Serializable {
 
     public void setAuthoritiessById (Collection<Authorities> authoritiessById) {
         this.authoritiessById = authoritiessById;
+    }
+    public Collection<Client> getClientsById(){
+        return this.clientsById;
+    }
+
+    public void setClientsById (Collection<Client> clientsById) {
+        this.clientsById = clientsById;
     }
 }

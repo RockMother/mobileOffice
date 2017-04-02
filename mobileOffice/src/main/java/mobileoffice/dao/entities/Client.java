@@ -17,7 +17,7 @@ public class Client implements HasLongId, Serializable {
     private String passport;
     private String address;
     private String email;
-    private String passwordHash;
+    private long userId;
     private Collection<ClientContractRsp> clientContractRspsById;
 
     public long getId(){
@@ -69,12 +69,12 @@ public class Client implements HasLongId, Serializable {
     public void setEmail (String email) {
         this.email = email;
     }
-    public String getPasswordHash(){
-        return this.passwordHash;
+    public long getUserId(){
+        return this.userId;
     }
 
-    public void setPasswordHash (String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setUserId (long userId) {
+        this.userId = userId;
     }
     public Collection<ClientContractRsp> getClientContractRspsById(){
         return this.clientContractRspsById;

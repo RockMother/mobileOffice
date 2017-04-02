@@ -2,10 +2,8 @@ package generation;
 
 import config.GenerationSettings;
 import freemarker.cache.ClassTemplateLoader;
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
-import freemarker.template.TemplateExceptionHandler;
+import freemarker.core.ParseException;
+import freemarker.template.*;
 import model.Database;
 import model.Table;
 
@@ -19,7 +17,7 @@ public class TemplateRunner {
     private final Database model;
     private final GenerationSettings settings;
 
-    public TemplateRunner(Database model, GenerationSettings settings) throws IOException, TemplateException {
+    public TemplateRunner(Database model, GenerationSettings settings) throws IOException, TemplateException, ParseException, TemplateNotFoundException, MalformedTemplateNameException {
         this.model = model;
         this.settings = settings;
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_22);

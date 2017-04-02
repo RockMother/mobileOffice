@@ -9,20 +9,21 @@ public class Column extends BaseNamedObject {
     private final String name;
     private String dataType;
     private boolean isPrimaryKey;
+    private boolean autoIncrement;
     private final boolean isForeignKey;
     private Table refTable;
 
-    public Column(String name, String dataType, boolean isPrimaryKey, boolean isForeignKey) {
+    public Column(String name, String dataType, boolean isPrimaryKey, boolean autoIncrement, boolean isForeignKey) {
         super(name);
         this.name = name;
         this.dataType = dataType;
         this.isPrimaryKey = isPrimaryKey;
+        this.autoIncrement = autoIncrement;
         this.isForeignKey = isForeignKey;
     }
 
-    public Column(String name, String dataType, boolean isPrimaryKey, boolean isForeignKey, Table refTable) {
-        this(name, dataType, isPrimaryKey, isForeignKey);
-        this.refTable = refTable;
+    public boolean isAutoIncrement() {
+        return autoIncrement;
     }
 
     public String getDataType() {

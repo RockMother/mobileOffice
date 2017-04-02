@@ -26,8 +26,11 @@ public class TableColumnsExtractor extends DbDataReader<Column> {
     }
 
     protected Column createModel(ResultSet resultSet) throws SQLException {
-        //TABLE_NAME, COLUMN_NAME, DATA_TYP, IsKEY
+        //TABLE_NAME, COLUMN_NAME, DATA_TYP, EXTRA, IsKEY
         return new Column(resultSet.getString("COLUMN_NAME"),
-                typeMapper.convertMysqlTypeToJavaType(resultSet.getString("DATA_TYPE")), resultSet.getBoolean("IsKEY"), false);
+                typeMapper.convertMysqlTypeToJavaType(resultSet.getString("DATA_TYPE")),
+                resultSet.getBoolean("IsKEY"),
+                resultSet.getString("EXTRA").contains("auto_increment"),
+                false);
     }
 }
