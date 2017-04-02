@@ -4,11 +4,11 @@
 <head>
     <title>Login to mobile office</title>
     <link type="text/css" rel="stylesheet" href="/resources/main.css"/>
-    <link type="text/css" rel="stylesheet" href="/resources/login.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/form.css"/>
 </head>
 <body>
-<div class="login-form-wrapper">
-    <form class="login-form" name='loginForm' action="j_spring_security_check" method='POST'>
+<div class="form-wrapper">
+    <form class="form login-form" name='loginForm' action="j_spring_security_check" method='POST'>
         <div class="form-inner-wrapper">
             <div class="input-container">
                 <div class="label">User:</div>

@@ -5,8 +5,10 @@ import base.dao.contracts.Repository;
 import mobileoffice.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.io.Serializable;
 import java.util.List;
 
 public abstract class RepositoryImpl<T extends HasLongId> implements Repository<T> {
@@ -67,6 +69,29 @@ public abstract class RepositoryImpl<T extends HasLongId> implements Repository<
             return session.find(entityType, id);
         } catch (Exception e) {
             e.printStackTrace();
+            throw e;
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+    }
+
+    public T create(T model) throws Exception {
+        Session session = null;
+        Transaction transaction = null;
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            session.save(model);
+            transaction.commit();
+            return model;
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (transaction != null) {
+                transaction.rollback();
+            }
             throw e;
         } finally {
             if (session != null && session.isOpen()) {

@@ -53,3 +53,10 @@ html, body{
     font-size: 30px;
     font-weight: bold;
 }
+.main-toolbar .right-toolbar{
+    display: flex;
+    flex-direction: row;
+}
+.main-toolbar .right-toolbar div{
+    padding: 0 5px;
+}

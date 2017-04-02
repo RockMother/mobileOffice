@@ -1,11 +1,11 @@
-.login-form-wrapper{
+.form-wrapper{
     height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.login-form {
+.form {
     flex: 0 0 400px;
     height: 100px;
     border: 1px solid black;
@@ -28,7 +28,15 @@
 .input-container .input-wrapper{
     flex: 66;
 }
-.input-container .input-wrapper input{
+.input-container .input-wrapper *{
     width: 100%;
+}
+
+
+.login-form{
+    height: 100px;
+}
+.registration-form{
+    height: 200px;
 }
 

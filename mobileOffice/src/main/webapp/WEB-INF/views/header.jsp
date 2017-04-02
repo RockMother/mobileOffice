@@ -7,10 +7,15 @@
     <div class="right-toolbar">
         <c:choose>
             <c:when test="${loggedIn}">
-                <c:import url="user-info.jsp"></c:import>
+                <a href="logout">Logout</a>
             </c:when>
             <c:otherwise>
-                <a href="login">Login</a>
+                <div class="login-wrapper">
+                    <a href="login">Login</a>
+                </div>
+                <div class="Registration-wrapper">
+                    <a href="registration">Registration</a>
+                </div>
             </c:otherwise>
         </c:choose>
     </div>

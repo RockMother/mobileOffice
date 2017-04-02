@@ -9,7 +9,6 @@
     <sec:http authentication-manager-ref="daoManager">
         <sec:intercept-url pattern="/" access="permitAll"/>
         <sec:intercept-url pattern="/login" access="permitAll"/>
-        <sec:intercept-url pattern="/login-success" access="hasRole('ROLE_ADMIN')"/>
 
         <sec:form-login
                 login-processing-url="/j_spring_security_check"
@@ -18,7 +17,7 @@
                 authentication-failure-url="/login?error"
                 username-parameter="username"
                 password-parameter="password" />
-        <sec:logout logout-success-url="/login?logout" />
+        <sec:logout logout-success-url="/index" />
         <!-- enable csrf protection -->
         <sec:csrf disabled="true"/>
     </sec:http>
