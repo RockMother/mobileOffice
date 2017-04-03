@@ -23,7 +23,7 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@ModelAttribute RegistrationModel registrationModel) {
+    public String register(@ModelAttribute RegistrationModel registrationModel) throws Exception {
         registrationService.registerNewUser(registrationModel);
         return "redirect:index";
     }

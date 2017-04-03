@@ -7,7 +7,4 @@
     <import resource="classpath*:beans.dao.xml"/>
 
     <import resource="security.xml"/>
-
-
-
 </beans>

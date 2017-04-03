@@ -32,5 +32,8 @@
 <bean id="usersDataService" class="mobileoffice.business.services.data.UsersDataServiceImpl">
     <constructor-arg ref="usersRepository"/>
 </bean>
+<bean id="vTariffWithOptionsDataService" class="mobileoffice.business.services.data.VTariffWithOptionsDataServiceImpl">
+    <constructor-arg ref="vTariffWithOptionsRepository"/>
+</bean>
 
 </beans>

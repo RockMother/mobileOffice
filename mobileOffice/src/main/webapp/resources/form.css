@@ -5,6 +5,10 @@
     align-items: center;
     justify-content: center;
 }
+.form-wrapper,.tariffs-form{
+    align-items: flex-start;
+    justify-content: flex-start;
+}
 .form {
     flex: 0 0 400px;
     height: 100px;
@@ -37,6 +41,9 @@
     height: 100px;
 }
 .registration-form{
-    height: 200px;
+     height: 200px;
+ }
+.registration-form.new-client{
+    height: 400px;
 }
 

@@ -25,7 +25,7 @@ public class ModelExtractor {
         List<Table> tables = tableReader.getData();
 
         for (Table table : tables) {
-            TableColumnsExtractor columnsExtractor = new TableColumnsExtractor(settings, new DataTypeMapper());
+            TableColumnsExtractor columnsExtractor = new TableColumnsExtractor(settings, table.isView(), new DataTypeMapper());
             table.addColumns(columnsExtractor.getData(table.getName()));
         }
         ForeignKeysExtractor foreignKeysExtractor = new ForeignKeysExtractor(settings);

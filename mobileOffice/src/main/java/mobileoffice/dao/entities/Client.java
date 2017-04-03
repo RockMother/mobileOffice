@@ -13,7 +13,7 @@ public class Client implements HasLongId, Serializable {
     private long id;
     private String name;
     private String lastName;
-    private java.util.Date birthdate;
+    private java.sql.Date birthday;
     private String passport;
     private String address;
     private String email;
@@ -41,12 +41,12 @@ public class Client implements HasLongId, Serializable {
     public void setLastName (String lastName) {
         this.lastName = lastName;
     }
-    public java.util.Date getBirthdate(){
-        return this.birthdate;
+    public java.sql.Date getBirthday(){
+        return this.birthday;
     }
 
-    public void setBirthdate (java.util.Date birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthday (java.sql.Date birthday) {
+        this.birthday = birthday;
     }
     public String getPassport(){
         return this.passport;

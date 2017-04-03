@@ -14,7 +14,7 @@ public class TableReader extends DbDataReader<Table> {
     }
 
     protected Table createModel(ResultSet resultSet) throws SQLException {
-        return new Table(resultSet.getString(1), settings.getSchemaName());
+        return new Table(resultSet.getString("TABLE_NAME"), resultSet.getString("TABLE_TYPE").equals("VIEW") , settings.getSchemaName());
     }
 
     public List<Table> getData() {

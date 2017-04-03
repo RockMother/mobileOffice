@@ -14,10 +14,12 @@ import java.util.List;
  */
 public class TableColumnsExtractor extends DbDataReader<Column> {
 
+    private boolean isView;
     private final DataTypeMapper typeMapper;
 
-    public TableColumnsExtractor(ConnectionSettings settings, DataTypeMapper typeMapper) {
+    public TableColumnsExtractor(ConnectionSettings settings, boolean isView, DataTypeMapper typeMapper) {
         super(settings);
+        this.isView = isView;
         this.typeMapper = typeMapper;
     }
 
@@ -26,10 +28,11 @@ public class TableColumnsExtractor extends DbDataReader<Column> {
     }
 
     protected Column createModel(ResultSet resultSet) throws SQLException {
+        String columnName = resultSet.getString("COLUMN_NAME");
         //TABLE_NAME, COLUMN_NAME, DATA_TYP, EXTRA, IsKEY
-        return new Column(resultSet.getString("COLUMN_NAME"),
+        return new Column(columnName,
                 typeMapper.convertMysqlTypeToJavaType(resultSet.getString("DATA_TYPE")),
-                resultSet.getBoolean("IsKEY"),
+                resultSet.getBoolean("IsKEY") || (columnName.equals("id") && isView),
                 resultSet.getString("EXTRA").contains("auto_increment"),
                 false);
     }

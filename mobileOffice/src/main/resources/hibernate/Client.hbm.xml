@@ -7,7 +7,7 @@
         
         <property name="name" column="name"/>
         <property name="lastName" column="last_name"/>
-        <property name="birthdate" column="birthdate"/>
+        <property name="birthday" column="birthday"/>
         <property name="passport" column="passport"/>
         <property name="address" column="address"/>
         <property name="email" column="email"/>

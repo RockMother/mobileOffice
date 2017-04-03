@@ -16,34 +16,27 @@ public class GenerationSettings {
     public String getProjectRoot() {
         return projectRoot;
     }
-
     public String getEntityPackageName() {
         return entityPackageName;
     }
-
     public String getEntityFolder() {
         return entityPackageName.replaceAll("\\.", "/");
     }
-
     public String getRepositoryPackageName() {
         return repositoryPackageName;
     }
-
     public String getRepositoryInterfacePackageName() {
         return repositoryInterfacePackageName;
     }
-
     public String getResourceRoot() {
         return resourceRoot;
     }
-
     public String getUtilsPackageName() {
         return utilsPackageName;
     }
     public String getDataServicesPackageName() {
         return dataServicesPackageName;
     }
-
     public String getDataServiceInterfacesPackageName() {
         return dataServiceInterfacesPackageName;
     }

@@ -16,7 +16,7 @@ public class DataTypeMapper {
         if (mysqlType.equals("decimal"))
             return "Float";
         if (mysqlType.equals("date"))
-            return "java.util.Date";
+            return "java.sql.Date";
         return String.format("TYPE '%s' NOT FOUND!!!", mysqlType);
     }
 }

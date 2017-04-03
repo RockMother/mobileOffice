@@ -13,6 +13,7 @@ public class Options implements HasLongId, Serializable {
     private long id;
     private Float price;
     private Float intialPrice;
+    private String name;
     private Collection<TariffOptionsRsp> tariffOptionsRspsById;
 
     public long getId(){
@@ -35,6 +36,13 @@ public class Options implements HasLongId, Serializable {
 
     public void setIntialPrice (Float intialPrice) {
         this.intialPrice = intialPrice;
+    }
+    public String getName(){
+        return this.name;
+    }
+
+    public void setName (String name) {
+        this.name = name;
     }
     public Collection<TariffOptionsRsp> getTariffOptionsRspsById(){
         return this.tariffOptionsRspsById;

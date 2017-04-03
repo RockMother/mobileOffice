@@ -11,10 +11,12 @@ import java.util.List;
 public class Table extends BaseNamedObject {
     private List<Column> columns;
     private List<ForeignKey> foreignKeys;
+    private boolean isView;
     private String schemaName;
 
-    public Table(String name, String schemaName) {
+    public Table(String name, boolean isView, String schemaName) {
         super(name);
+        this.isView = isView;
         this.schemaName = schemaName;
         columns = new ArrayList<Column>();
         foreignKeys = new ArrayList<ForeignKey>();
@@ -38,5 +40,9 @@ public class Table extends BaseNamedObject {
 
     public String getSchemaName() {
         return schemaName;
+    }
+
+    public boolean isView() {
+        return isView;
     }
 }

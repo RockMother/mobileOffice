@@ -7,6 +7,7 @@
         
         <property name="price" column="price"/>
         <property name="intialPrice" column="intial_price"/>
+        <property name="name" column="name"/>
         <set name="tariffOptionsRspsById" inverse="true">
             <key>
                 <column name="tariff_option_id"/>
