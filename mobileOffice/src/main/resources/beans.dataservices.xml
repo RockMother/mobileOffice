@@ -17,6 +17,9 @@
 <bean id="contractDataService" class="mobileoffice.business.services.data.ContractDataServiceImpl">
     <constructor-arg ref="contractRepository"/>
 </bean>
+<bean id="managerDataService" class="mobileoffice.business.services.data.ManagerDataServiceImpl">
+    <constructor-arg ref="managerRepository"/>
+</bean>
 <bean id="optionsDataService" class="mobileoffice.business.services.data.OptionsDataServiceImpl">
     <constructor-arg ref="optionsRepository"/>
 </bean>

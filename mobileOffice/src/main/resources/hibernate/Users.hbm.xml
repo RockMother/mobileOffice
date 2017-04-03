@@ -20,5 +20,11 @@
             </key>
             <one-to-many not-found="ignore" class="mobileoffice.dao.entities.Client"/>
          </set>
+        <set name="managersById" inverse="true">
+            <key>
+                <column name="user_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="mobileoffice.dao.entities.Manager"/>
+         </set>
     </class>
 </hibernate-mapping>

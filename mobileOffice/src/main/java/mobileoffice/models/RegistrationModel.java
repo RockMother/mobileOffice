@@ -7,7 +7,7 @@ public class RegistrationModel {
     private String username;
     private String password;
     private String repeatPassword;
-    private int role;
+    private String role;
 
     public String getUsername() {
         return username;
@@ -33,11 +33,11 @@ public class RegistrationModel {
         this.repeatPassword = repeatPassword;
     }
 
-    public int getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(int role) {
+    public void setRole(String role) {
         this.role = role;
     }
 }

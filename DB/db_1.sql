@@ -1,3 +1,11 @@
+CREATE TABLE `users` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(20) DEFAULT NULL,
+  `password` varchar(20) DEFAULT NULL,
+  `enabled` bit(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
 CREATE TABLE `authorities` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT NULL,
@@ -21,15 +29,18 @@ CREATE TABLE `client` (
   CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `client_contract_rsp` (
+CREATE TABLE mobileoffice.manager (
+   id BIGINT AUTO_INCREMENT,
+   user_id BIGINT,
+  CONSTRAINT fk_manager_user_id FOREIGN KEY (user_id) REFERENCES mobileoffice.users (id) ON UPDATE RESTRICT ON DELETE RESTRICT,
+  PRIMARY KEY (id)
+) ENGINE = InnoDB ROW_FORMAT = DEFAULT;
+
+CREATE TABLE `tariff` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `client_id` bigint(20) NOT NULL,
-  `contract_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `client_id` (`client_id`),
-  KEY `contract_id` (`contract_id`),
-  CONSTRAINT `client_id` FOREIGN KEY (`client_id`) REFERENCES `client` (`id`),
-  CONSTRAINT `contract_id` FOREIGN KEY (`contract_id`) REFERENCES `contract` (`id`)
+  `name` varchar(20) DEFAULT NULL,
+  `price` decimal(10,0) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `contract` (
@@ -41,17 +52,21 @@ CREATE TABLE `contract` (
   CONSTRAINT `fk_contract_id_tariff_id` FOREIGN KEY (`tariff_id`) REFERENCES `tariff` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `client_contract_rsp` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `client_id` bigint(20) NOT NULL,
+  `contract_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `client_id` (`client_id`),
+  KEY `contract_id` (`contract_id`),
+  CONSTRAINT `client_id` FOREIGN KEY (`client_id`) REFERENCES `client` (`id`),
+  CONSTRAINT `contract_id` FOREIGN KEY (`contract_id`) REFERENCES `contract` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE `options` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `price` decimal(10,0) NOT NULL,
   `intial_price` decimal(10,0) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `tariff` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) DEFAULT NULL,
-  `price` decimal(10,0) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -66,11 +81,5 @@ CREATE TABLE `tariff_options_rsp` (
   CONSTRAINT `fk_tariff_option_id` FOREIGN KEY (`tariff_option_id`) REFERENCES `options` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `users` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(20) DEFAULT NULL,
-  `password` varchar(20) DEFAULT NULL,
-  `enabled` bit(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
 

@@ -70,8 +70,6 @@
       <artifactId>spring-security-taglibs</artifactId>
       <version>${spring-security.version}</version>
     </dependency>
-
-
     <dependency>
       <groupId>taglibs</groupId>
       <artifactId>standard</artifactId>
