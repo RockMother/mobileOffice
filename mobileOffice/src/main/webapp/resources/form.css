@@ -36,6 +36,15 @@
     width: 100%;
 }
 
+.multi-select-list-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.multi-select-list-buttons button{
+    flex: 0 0 50px;
+}
+
 
 .login-form{
     height: 100px;
@@ -46,4 +55,6 @@
 .registration-form.new-client{
     height: 400px;
 }
+
+
 

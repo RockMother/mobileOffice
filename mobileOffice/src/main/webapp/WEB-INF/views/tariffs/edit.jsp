@@ -25,7 +25,45 @@
                     <div class="label">Price:</div>
                     <div class="input-wrapper"><input type='number' name='price' value="${tariffs.price}"/></div>
                 </div>
-                <button type="submit"><c:if test="${addNew}">Create</c:if><c:if test="${!addNew}">Edit</c:if></button>
+                <div class="input-container">
+                    <div class="label">Options:</div>
+                    <div class="multi-select-list input-wrapper">
+                        <select multiple id="avaliableOptions">
+                            <c:forEach items="${options}" var="option">
+                            <option name="${option.name}" value="${option.id}">${option.name}</option>
+                            </c:forEach>
+                        </select>
+                        <div class="multi-select-list-buttons">
+                            <button type="button" onclick="addSelectedItems('avaliableOptions', 'selectedOptions')">Add</button>
+                            <button type="button" onclick="addSelectedItems('selectedOptions', 'avaliableOptions')">Remove</button>
+                        </div>
+                        <select multiple id="selectedOptions" name="selectedOptions">
+                            <c:forEach items="${selectedOptions}" var="option">
+                                <option name="${option.name}" value="${option.id}">${option.name}</option>
+                            </c:forEach>
+                        </select>
+                        <script>
+                            function addSelectedItems(source, target){
+                                var sourceList = document.getElementById(source);
+                                var targetList = document.getElementById(target);
+                                var selectedValues = sourceList.value || [];
+                                if (!(selectedValues instanceof Array)){
+                                    selectedValues = [selectedValues];
+                                }
+                                for (var i = 0; i < sourceList.children.length; i++) {
+                                    var childNode = sourceList.children[i];
+                                    if (selectedValues.indexOf(childNode.value) !== -1){
+                                        sourceList.removeChild(childNode);
+                                        targetList.appendChild(childNode);
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit">Save</button>
+                </div>
             </div>
         </form>
     </div>
