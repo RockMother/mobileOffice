@@ -2,13 +2,12 @@ package base.dao.repositories;
 
 import base.dao.contracts.HasLongId;
 import base.dao.contracts.Repository;
+import mobileoffice.dao.entities.Tariff;
 import mobileoffice.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.io.Serializable;
 import java.util.List;
 
 public abstract class RepositoryImpl<T extends HasLongId> implements Repository<T> {
@@ -94,4 +93,38 @@ public abstract class RepositoryImpl<T extends HasLongId> implements Repository<
         }
     }
 
+    public void delete(long id) throws Exception {
+        Session session = null;
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            session = sessionFactory.openSession();
+            T item = entityType.newInstance();
+            item.setId(id);
+            session.delete(item);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+    }
+
+    @Override
+    public void update(Tariff current) {
+        Session session = null;
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            session = sessionFactory.openSession();
+            session.update(current);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+    }
 }

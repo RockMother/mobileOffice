@@ -15,4 +15,8 @@ public interface TariffService {
     List<Options> getSelectedOptions(long id) throws Exception;
 
     List<Options> getAvaliableOptions(long id, List<Options> selectedOptions) throws Exception;
+
+    void delete(long id) throws Exception;
+
+    void updateTariff(long id, TariffModel tariffModel) throws Exception;
 }

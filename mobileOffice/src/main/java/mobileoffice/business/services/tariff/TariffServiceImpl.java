@@ -31,50 +31,60 @@ public class TariffServiceImpl implements TariffService {
         this.tariffOptionsRspRepository = tariffOptionsRspRepository;
     }
 
+    @Override
     public Tariff addNewTariff(TariffModel model) throws Exception {
-        try {
-            Tariff tariff = new Tariff();
-            tariff.setName(model.getName());
-            tariff.setPrice(model.getPrice());
-            return tariffRepository.create(tariff);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw e;
+        Tariff tariff = new Tariff();
+        tariff.setName(model.getName());
+        tariff.setPrice(model.getPrice());
+        Tariff result = tariffRepository.create(tariff);
+        if (model.getSelectedOptions().size() > 0) {
+            for (Integer optionId : model.getSelectedOptions()) {
+                TariffOptionsRsp rsp = new TariffOptionsRsp();
+                rsp.setTariffId(result.getId());
+                rsp.setTariffOptionId(optionId);
+                tariffOptionsRspRepository.create(rsp);
+            }
         }
+        return result;
     }
 
+    @Override
     public List<Options> getSelectedOptions(long id) throws Exception {
-        try {
-            List<Options> result = new ArrayList<Options>();
-            List<Object> params = new ArrayList<Object>();
-            params.add(id);
-            for(TariffOptionsRsp rsp: tariffOptionsRspRepository.findByParameters("tariff_id = ?", params)){
-                result.add(rsp.getOptionsByOptionsId());
-            }
-            return result;
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw e;
+        List<Options> result = new ArrayList<Options>();
+        List<Object> params = new ArrayList<Object>();
+        params.add(id);
+        for (TariffOptionsRsp rsp : tariffOptionsRspRepository.findByParameters("tariff_id = ?", params)) {
+            result.add(rsp.getOptionsByOptionsId());
         }
+        return result;
     }
 
+    @Override
     public List<Options> getAvaliableOptions(long id, List<Options> selectedOptions) throws Exception {
-        try {
-            List<Options> result = new ArrayList<>();
-            List<Options> avaliableOptions = optionsRepository.getAll();
+        List<Options> result = new ArrayList<>();
+        List<Options> avaliableOptions = optionsRepository.getAll();
 
-            Stream<Options> selectedOptionsStream = selectedOptions.stream();
-            for (Options avaliableOption: avaliableOptions){
-                if (!selectedOptionsStream.anyMatch(s -> avaliableOption.getId() == s.getId())){
-                    result.add(avaliableOption);
-                }
+        Stream<Options> selectedOptionsStream = selectedOptions.stream();
+        for (Options avaliableOption : avaliableOptions) {
+            if (!selectedOptionsStream.anyMatch(s -> avaliableOption.getId() == s.getId())) {
+                result.add(avaliableOption);
             }
-            return result;
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw e;
         }
+        return result;
+    }
 
+    @Override
+    public void delete(long id) throws Exception {
+        tariffRepository.delete(id);
+    }
+
+    @Override
+    public void updateTariff(long id, TariffModel tariffModel) throws Exception {
+        Tariff current = tariffRepository.getById(id);
+        current.setPrice(tariffModel.getPrice());
+        current.setName(tariffModel.getName());
+        //TODO Options
+        tariffRepository.update(current);
     }
 }
 

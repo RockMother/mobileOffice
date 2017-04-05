@@ -5,4 +5,5 @@ package base.dao.contracts;
  */
 public interface HasLongId {
     long getId();
+    void setId(long id);
 }

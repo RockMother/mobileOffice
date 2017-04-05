@@ -25,6 +25,7 @@
             <div class="value">${tariff.price}</div>
           </div>
         </div>
+        <div class="footer-card"><a href="/tariffs/delete?id=${tariff.id}">Remove</a></div>
       </div>
     </c:forEach>
       <div class="card">

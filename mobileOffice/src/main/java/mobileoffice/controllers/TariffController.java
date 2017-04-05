@@ -61,9 +61,26 @@ public class TariffController {
         List<Options> selectedOptions = tariffService.getSelectedOptions(id);
         model.addAttribute("options", tariffService.getAvaliableOptions(id, selectedOptions));
         model.addAttribute("selectedOptions", selectedOptions);
-        model.addAttribute("tariffs", tariffDataService.getById(id));
+        model.addAttribute("tariff", tariffDataService.getById(id));
         model.addAttribute("addNew", false);
         return "/tariffs/edit";
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String editPost(@RequestParam long id, TariffModel tariffModel, Model model) throws Exception {
+        tariffService.updateTariff(id, tariffModel);
+        List<Options> selectedOptions = tariffService.getSelectedOptions(id);
+        model.addAttribute("options", tariffService.getAvaliableOptions(id, selectedOptions));
+        model.addAttribute("selectedOptions", selectedOptions);
+        model.addAttribute("tariff", tariffDataService.getById(id));
+        model.addAttribute("addNew", false);
+        return "/tariffs/edit";
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String deleteGet(@RequestParam long id) throws Exception {
+        tariffService.delete(id);
+        return "redirect:/tariffs";
     }
 
 

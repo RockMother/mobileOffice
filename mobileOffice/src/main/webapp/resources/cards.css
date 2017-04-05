@@ -37,3 +37,14 @@
     flex: 66;
 }
 
+.footer-card{
+    flex: 0 0 30px;
+    height: 30px;
+    width: 100%;
+    border: 1px black;
+    border-top-style: solid;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
