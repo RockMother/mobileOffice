@@ -11,9 +11,6 @@
 <bean id="clientDataService" class="mobileoffice.business.services.data.ClientDataServiceImpl">
     <constructor-arg ref="clientRepository"/>
 </bean>
-<bean id="clientContractRspDataService" class="mobileoffice.business.services.data.ClientContractRspDataServiceImpl">
-    <constructor-arg ref="clientContractRspRepository"/>
-</bean>
 <bean id="contractDataService" class="mobileoffice.business.services.data.ContractDataServiceImpl">
     <constructor-arg ref="contractRepository"/>
 </bean>

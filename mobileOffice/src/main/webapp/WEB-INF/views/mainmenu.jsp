@@ -9,6 +9,7 @@
         <div class="menu-item"><a href="/register">Add new manager</a></div>
     </c:if>
     <c:if test="${loggedAsManager}">
+        <div class="menu-item"><a href="/clients">Clients</a></div>
         <div class="menu-item"><a href="/tariffs">Tariffs</a></div>
     </c:if>
 </div>

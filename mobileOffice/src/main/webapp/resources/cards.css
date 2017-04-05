@@ -32,9 +32,11 @@
 }
 .card-row .label{
     flex: 33;
+    padding: 5px;
 }
 .card-row .value{
     flex: 66;
+    padding: 5px;
 }
 
 .footer-card{

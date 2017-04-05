@@ -47,20 +47,12 @@ CREATE TABLE `contract` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `number` varchar(20) NOT NULL,
   `tariff_id` bigint(20) NOT NULL,
+  `client_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_contract_id_tariff_id` (`tariff_id`),
+  KEY `fk_contract_id_client_id` (`client_id`),
+  CONSTRAINT `fk_contract_id_client_id` FOREIGN KEY (`client_id`) REFERENCES `client` (`id`),
   CONSTRAINT `fk_contract_id_tariff_id` FOREIGN KEY (`tariff_id`) REFERENCES `tariff` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `client_contract_rsp` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `client_id` bigint(20) NOT NULL,
-  `contract_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `client_id` (`client_id`),
-  KEY `contract_id` (`contract_id`),
-  CONSTRAINT `client_id` FOREIGN KEY (`client_id`) REFERENCES `client` (`id`),
-  CONSTRAINT `contract_id` FOREIGN KEY (`contract_id`) REFERENCES `contract` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `options` (

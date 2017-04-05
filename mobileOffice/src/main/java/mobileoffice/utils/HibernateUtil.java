@@ -13,7 +13,6 @@ public class HibernateUtil {
             Configuration cfg = new Configuration().configure("hibernate/hibernate.cfg.xml");
             cfg.addResource("hibernate/Authorities.hbm.xml");
             cfg.addResource("hibernate/Client.hbm.xml");
-            cfg.addResource("hibernate/ClientContractRsp.hbm.xml");
             cfg.addResource("hibernate/Contract.hbm.xml");
             cfg.addResource("hibernate/Manager.hbm.xml");
             cfg.addResource("hibernate/Options.hbm.xml");

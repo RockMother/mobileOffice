@@ -12,11 +12,11 @@
         <property name="address" column="address"/>
         <property name="email" column="email"/>
         <property name="userId" column="user_id"/>
-        <set name="clientContractRspsById" inverse="true">
+        <set name="contractsById" inverse="true">
             <key>
                 <column name="client_id"/>
             </key>
-            <one-to-many not-found="ignore" class="mobileoffice.dao.entities.ClientContractRsp"/>
+            <one-to-many not-found="ignore" class="mobileoffice.dao.entities.Contract"/>
          </set>
     </class>
 </hibernate-mapping>

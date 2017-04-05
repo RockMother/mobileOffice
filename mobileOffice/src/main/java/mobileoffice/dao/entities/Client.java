@@ -18,7 +18,7 @@ public class Client implements HasLongId, Serializable {
     private String address;
     private String email;
     private long userId;
-    private Collection<ClientContractRsp> clientContractRspsById;
+    private Collection<Contract> contractsById;
 
     public long getId(){
         return this.id;
@@ -76,11 +76,11 @@ public class Client implements HasLongId, Serializable {
     public void setUserId (long userId) {
         this.userId = userId;
     }
-    public Collection<ClientContractRsp> getClientContractRspsById(){
-        return this.clientContractRspsById;
+    public Collection<Contract> getContractsById(){
+        return this.contractsById;
     }
 
-    public void setClientContractRspsById (Collection<ClientContractRsp> clientContractRspsById) {
-        this.clientContractRspsById = clientContractRspsById;
+    public void setContractsById (Collection<Contract> contractsById) {
+        this.contractsById = contractsById;
     }
 }

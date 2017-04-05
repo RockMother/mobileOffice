@@ -13,7 +13,7 @@ public class Contract implements HasLongId, Serializable {
     private long id;
     private String number;
     private long tariffId;
-    private Collection<ClientContractRsp> clientContractRspsById;
+    private long clientId;
 
     public long getId(){
         return this.id;
@@ -36,11 +36,11 @@ public class Contract implements HasLongId, Serializable {
     public void setTariffId (long tariffId) {
         this.tariffId = tariffId;
     }
-    public Collection<ClientContractRsp> getClientContractRspsById(){
-        return this.clientContractRspsById;
+    public long getClientId(){
+        return this.clientId;
     }
 
-    public void setClientContractRspsById (Collection<ClientContractRsp> clientContractRspsById) {
-        this.clientContractRspsById = clientContractRspsById;
+    public void setClientId (long clientId) {
+        this.clientId = clientId;
     }
 }
