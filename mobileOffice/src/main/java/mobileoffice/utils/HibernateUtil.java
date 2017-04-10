@@ -19,6 +19,7 @@ public class HibernateUtil {
             cfg.addResource("hibernate/Tariff.hbm.xml");
             cfg.addResource("hibernate/TariffOptionsRsp.hbm.xml");
             cfg.addResource("hibernate/Users.hbm.xml");
+            cfg.addResource("hibernate/VContractWithTariff.hbm.xml");
             cfg.addResource("hibernate/VTariffWithOptions.hbm.xml");
             sessionFactory = cfg.buildSessionFactory();
         } catch (Throwable ex) {

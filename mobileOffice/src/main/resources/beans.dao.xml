@@ -13,6 +13,7 @@
 <bean id="tariffRepository" class="mobileoffice.dao.repositories.TariffRepositoryImpl"/>
 <bean id="tariffOptionsRspRepository" class="mobileoffice.dao.repositories.TariffOptionsRspRepositoryImpl"/>
 <bean id="usersRepository" class="mobileoffice.dao.repositories.UsersRepositoryImpl"/>
+<bean id="vContractWithTariffRepository" class="mobileoffice.dao.repositories.VContractWithTariffRepositoryImpl"/>
 <bean id="vTariffWithOptionsRepository" class="mobileoffice.dao.repositories.VTariffWithOptionsRepositoryImpl"/>
 
 </beans>

@@ -3,6 +3,7 @@ package mobileoffice.controllers;
 import mobileoffice.business.contracts.ClientsService;
 import mobileoffice.business.contracts.data.ClientDataService;
 import mobileoffice.business.contracts.data.TariffDataService;
+import mobileoffice.business.contracts.data.VContractWithTariffDataService;
 import mobileoffice.dao.entities.Client;
 import mobileoffice.models.NewClientModel;
 import org.springframework.stereotype.Controller;
@@ -19,14 +20,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ClientsController {
 
     private ClientDataService clientDataService;
+    private VContractWithTariffDataService contractWithTariffDataService;
     private ClientsService clientsService;
     private TariffDataService tariffDataService;
 
     public ClientsController(ClientDataService clientDataService,
+                             VContractWithTariffDataService contractWithTariffDataService,
                              ClientsService clientsService,
                              TariffDataService tariffDataService){
 
         this.clientDataService = clientDataService;
+        this.contractWithTariffDataService = contractWithTariffDataService;
         this.clientsService = clientsService;
         this.tariffDataService = tariffDataService;
     }
@@ -46,13 +50,15 @@ public class ClientsController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String add(NewClientModel newClientModel) throws Exception {
-        Client result = clientsService.createClient(newClientModel);
-        return "redirect:edit?id=" + result.getId();
+        long id = clientsService.createClient(newClientModel);
+        return "redirect:edit?id=" + id;
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String edit(@RequestParam long id, Model model) throws Exception {
-        model.addAttribute("user", clientDataService.getById(id));
+        Client client = clientDataService.getById(id);
+        model.addAttribute("user", client);
+        model.addAttribute("contracts", clientsService.getContracts(client.getId()));
         return "clients/edit";
     }
 }

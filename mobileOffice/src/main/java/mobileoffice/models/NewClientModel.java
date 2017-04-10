@@ -10,6 +10,16 @@ public class NewClientModel extends RegistrationModel {
     private String passport;
     private String address;
     private String email;
+    private String number;
+    private long tariffId;
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
     public String getName() {
         return name;
@@ -57,5 +67,13 @@ public class NewClientModel extends RegistrationModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public long getTariffId() {
+        return tariffId;
+    }
+
+    public void setTariffId(long tariffId) {
+        this.tariffId = tariffId;
     }
 }

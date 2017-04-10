@@ -18,8 +18,11 @@
         <form action="/clients/add" method="post">
             <c:if test="${empty user}">
                 <c:import url="../common/userFields.jsp"/>
+                <c:import url="../manager/clientFields.jsp"/>
             </c:if>
-            <c:import url="../manager/clientFields.jsp"/>
+            <c:if test="${not empty user}">
+                <c:import url="../manager/editClientFields.jsp"/>
+            </c:if>
         </form>
     </div>
 </div>
