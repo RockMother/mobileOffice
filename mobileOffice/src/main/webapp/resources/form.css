@@ -2,18 +2,24 @@
     height: 100%;
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.form-wrapper,.tariffs-form{
+.form-wrapper.tariffs-form{
     align-items: flex-start;
     justify-content: flex-start;
 }
+.form-wrapper.new-client-form{
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 400px;
+}
+.form-wrapper.new-client-form > .input-container {
+    width: 100%;
+}
 .form {
-    flex: 0 0 400px;
-    height: 100px;
     border: 1px solid black;
-    padding: 10px;
 }
 .form-inner-wrapper{
     width: 100%;
@@ -45,9 +51,9 @@
     flex: 0 0 50px;
 }
 
-
-.login-form{
+.form.login-form{
     height: 100px;
+    width: 400px;
 }
 .registration-form{
      height: 200px;

@@ -33,7 +33,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         this.authoritiesRepository = authoritiesRepository;
     }
 
-    @Transactional
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         List<Object> params = new ArrayList<Object>();
         params.add(s);

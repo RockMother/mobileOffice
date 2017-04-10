@@ -52,6 +52,10 @@
                     </div>
                 </div>
             </c:forEach>
+            <div class="card">
+                <div class="card-caption"><a href="/clients/add">Create new</a></div>
+                <div class="card-body"/>
+            </div>
         </div>
     </div>
 </div>

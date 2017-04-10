@@ -15,7 +15,6 @@ html, body{
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 .working-area{
     display: flex;

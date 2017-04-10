@@ -14,7 +14,7 @@
 <div class="form-wrapper">
     <form class="form registration-form <c:if test="${loggedAsManager}">new-client</c:if>" action="/register" method='POST'>
         <div class="form-inner-wrapper">
-            <c:import url="common/newUserFields.jsp"/>
+            <c:import url="common/userFields.jsp"/>
             <c:if test="${loggedAsManager}">
                 <div class="input-container">
                     <div class="label">Name:</div>
@@ -47,7 +47,7 @@
                 <input type="hidden" name='role' value="ROLE_MANAGER"/>
             </c:if>
             <c:if test="${loggedAsManager}">
-                <c:import url="manager/addNewClient.jsp"/>
+                <c:import url="manager/clientFields.jsp"/>
             </c:if>
             <div class="input-container">
                 <div class="login-button"><input name="submit" type="submit" value="Register"/></div>

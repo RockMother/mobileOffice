@@ -4,7 +4,6 @@ import mobileoffice.dao.contracts.AuthoritiesRepository;
 import mobileoffice.dao.contracts.ClientRepository;
 import mobileoffice.dao.contracts.UsersRepository;
 import mobileoffice.dao.entities.Authorities;
-import mobileoffice.dao.entities.Client;
 import mobileoffice.dao.entities.Manager;
 import mobileoffice.dao.entities.Users;
 import mobileoffice.dao.repositories.ManagerRepositoryImpl;
@@ -31,7 +30,8 @@ public class RegistrationServiceImpl implements mobileoffice.business.contracts.
         this.authoritiesRepository = authoritiesRepository;
     }
 
-    public void registerNewUser(RegistrationModel model) throws Exception {
+    @Override
+    public Users registerNewUser(RegistrationModel model) throws Exception {
         Users user = createUser(model);
 
         user = usersRepository.create(user);
@@ -39,21 +39,8 @@ public class RegistrationServiceImpl implements mobileoffice.business.contracts.
 
         if (model.getRole().equals("ROLE_MANAGER")) {
             managerRepository.create(createManager(user.getId()));
-        } else {
-            clientRepository.create(createClient(user.getId(), model));
         }
-    }
-
-    private Client createClient(long id, RegistrationModel model) {
-        Client client = new Client();
-        client.setUserId(id);
-        client.setAddress(model.getAddress());
-        client.setBirthday(model.getBirthday());
-        client.setEmail(model.getEmail());
-        client.setLastName(model.getLastName());
-        client.setName(model.getName());
-        client.setPassport(model.getPassport());
-        return client;
+        return user;
     }
 
     private Users createUser(RegistrationModel model){
