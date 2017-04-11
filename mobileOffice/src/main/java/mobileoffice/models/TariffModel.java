@@ -1,5 +1,6 @@
 package mobileoffice.models;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Set;
 public class TariffModel {
     private String name;
     private Float price;
-    private Set<Integer> selectedOptions;
+    private Set<Integer> selectedOptions = new HashSet<>();
 
     public String getName() {
         return name;

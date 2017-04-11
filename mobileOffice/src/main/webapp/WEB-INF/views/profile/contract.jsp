@@ -16,6 +16,7 @@
     </c:if>
     <div class="form-wrapper contract-edit">
         <form action="/contract/edit" method="post">
+            <input type="hidden" value="${contract.id}" name="id">
             <div class="input-container">
                 <div class="label">Number:</div>
                 <div class="input-wrapper"><input type="text" value="${contract.number}" readonly disabled/></div>
@@ -23,7 +24,7 @@
             <div class="input-container">
                 <div class="label">Tariff:</div>
                 <div class="input-wrapper">
-                    <select type="text" value="${contract.number}" value="${contract.tariffId}">
+                    <select type="text" name="tariffId" value="${contract.number}" value="${contract.tariffId}">
                         <c:forEach items="${tariffs}" var="tariff">
                             <option name="${tariff.name}" value="${tariff.id}">${tariff.name}</option>
                         </c:forEach>

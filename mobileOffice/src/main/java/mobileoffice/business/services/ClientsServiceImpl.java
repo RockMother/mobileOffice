@@ -55,6 +55,8 @@ public class ClientsServiceImpl implements mobileoffice.business.contracts.Clien
         contract.setTariffId(model.getTariffId());
         contract.setNumber(model.getNumber());
         contract.setClientId(clientId);
+        contract.setIsBlocked(false);
+        contract.setIsAdminBlocker(false);
         return contract;
     }
 
@@ -69,6 +71,8 @@ public class ClientsServiceImpl implements mobileoffice.business.contracts.Clien
         client.setLastName(model.getLastName());
         client.setName(model.getName());
         client.setPassport(model.getPassport());
+        client.setLocked(false);
+        client.setLockedByAdmin(false);
         return client;
     }
 }

@@ -7,6 +7,7 @@ import mobileoffice.business.contracts.data.TariffDataService;
 import mobileoffice.business.contracts.data.VContractWithTariffDataService;
 import mobileoffice.dao.entities.Options;
 import mobileoffice.dao.entities.VContractWithTariff;
+import mobileoffice.models.EditContractModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,7 +65,7 @@ public class ContractController {
     }
 
     public String postEditContract(Model model, EditContractModel editContractModel){
-
+        return "redirect:/edit?id=" + editContractModel.getId();
     }
 
 

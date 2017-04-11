@@ -6,7 +6,7 @@
 <sec:authorize var="loggedAsAdmin" access="hasRole('ROLE_ADMIN')"></sec:authorize>
 <div class="main-menu">
     <c:if test="${loggedAsAdmin}">
-        <div class="menu-item"><a href="/register">Add new manager</a></div>
+        <div class="menu-item"><a href="/registration">Add new manager</a></div>
     </c:if>
     <c:if test="${loggedAsManager}">
         <div class="menu-item"><a href="/clients">Clients</a></div>
