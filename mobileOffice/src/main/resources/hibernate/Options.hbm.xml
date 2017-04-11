@@ -8,6 +8,12 @@
         <property name="price" column="price"/>
         <property name="intialPrice" column="intial_price"/>
         <property name="name" column="name"/>
+        <set name="contractOptionRspsById" inverse="true">
+            <key>
+                <column name="option_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="mobileoffice.dao.entities.ContractOptionRsp"/>
+         </set>
         <set name="tariffOptionsRspsById" inverse="true">
             <key>
                 <column name="tariff_option_id"/>
