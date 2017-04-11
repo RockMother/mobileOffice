@@ -51,7 +51,7 @@ public class ClientsController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String add(NewClientModel newClientModel) throws Exception {
         long id = clientsService.createClient(newClientModel);
-        return "redirect:edit?id=" + id;
+        return "redirect:/clients";
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
