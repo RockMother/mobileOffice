@@ -12,7 +12,7 @@ public class DataTypeMapper {
         if (mysqlType.equals("int"))
             return "Integer";
         if (mysqlType.equals("bit"))
-            return "boolean";
+            return "Boolean";
         if (mysqlType.equals("decimal"))
             return "Float";
         if (mysqlType.equals("date"))

@@ -5,7 +5,9 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <#list model as table><bean id="${table.codeName}Repository" class="${settings.repositoryPackageName}.${table.className}RepositoryImpl"/>
+    <#list model as table><bean id="${table.codeName}Repository" class="${settings.repositoryPackageName}.${table.className}RepositoryImpl">
+
+    </bean>
     </#list>
 
 </beans>

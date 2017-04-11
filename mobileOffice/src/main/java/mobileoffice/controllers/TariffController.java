@@ -47,7 +47,7 @@ public class TariffController {
     public String addGet(Model model) throws Exception {
         model.addAttribute("options", optionsDataService.getAll());
         model.addAttribute("addNew", true);
-        return "tariffs/add";
+        return "tariffs/edit";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -63,7 +63,7 @@ public class TariffController {
         model.addAttribute("selectedOptions", selectedOptions);
         model.addAttribute("tariff", tariffDataService.getById(id));
         model.addAttribute("addNew", false);
-        return "tariffs/add";
+        return "tariffs/edit";
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
@@ -74,7 +74,7 @@ public class TariffController {
         model.addAttribute("selectedOptions", selectedOptions);
         model.addAttribute("tariff", tariffDataService.getById(id));
         model.addAttribute("addNew", false);
-        return "tariffs/add";
+        return "tariffs/edit";
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)

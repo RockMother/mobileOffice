@@ -18,6 +18,8 @@ public class Client implements HasLongId, Serializable {
     private String address;
     private String email;
     private long userId;
+    private Boolean locked;
+    private Boolean lockedByAdmin;
     private Collection<Contract> contractsById;
 
     public long getId(){
@@ -75,6 +77,20 @@ public class Client implements HasLongId, Serializable {
 
     public void setUserId (long userId) {
         this.userId = userId;
+    }
+    public Boolean getLocked(){
+        return this.locked;
+    }
+
+    public void setLocked (Boolean locked) {
+        this.locked = locked;
+    }
+    public Boolean getLockedByAdmin(){
+        return this.lockedByAdmin;
+    }
+
+    public void setLockedByAdmin (Boolean lockedByAdmin) {
+        this.lockedByAdmin = lockedByAdmin;
     }
     public Collection<Contract> getContractsById(){
         return this.contractsById;

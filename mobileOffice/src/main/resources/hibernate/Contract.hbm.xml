@@ -8,5 +8,13 @@
         <property name="number" column="number"/>
         <property name="tariffId" column="tariff_id"/>
         <property name="clientId" column="client_id"/>
+        <property name="isBlocked" column="is_blocked"/>
+        <property name="isAdminBlocker" column="is_admin_blocker"/>
+        <set name="contractOptionRspsById" inverse="true">
+            <key>
+                <column name="contract_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="mobileoffice.dao.entities.ContractOptionRsp"/>
+         </set>
     </class>
 </hibernate-mapping>

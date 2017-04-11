@@ -1,0 +1,35 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="mappingResources">
+            <list>
+                            <value>hibernate/Authorities.hbm.xml</value>
+                <value>hibernate/Client.hbm.xml</value>
+                <value>hibernate/Contract.hbm.xml</value>
+                <value>hibernate/ContractOptionRsp.hbm.xml</value>
+                <value>hibernate/Manager.hbm.xml</value>
+                <value>hibernate/Options.hbm.xml</value>
+                <value>hibernate/Tariff.hbm.xml</value>
+                <value>hibernate/TariffOptionsRsp.hbm.xml</value>
+                <value>hibernate/Users.hbm.xml</value>
+                <value>hibernate/VContractWithTariff.hbm.xml</value>
+                <value>hibernate/VTariffWithOptions.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <value>
+                hibernate.dialect=org.hibernate.dialect.HSQLDialect
+            </value>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="com.mysql.cj.jdbc.MysqlDataSource">
+        <property name="url" value="jdbc:mysql://localhost:3306/mobileoffice?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
+        <property name="user" value="root"/>
+        <property name="password" value="1234"/>
+    </bean>
+</beans>

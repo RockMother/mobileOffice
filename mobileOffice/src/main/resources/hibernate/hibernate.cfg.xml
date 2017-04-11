@@ -20,7 +20,7 @@
         <property name="connection.useSSL">false</property>
 
         <property name="hibernate.enable_lazy_load_no_trans">true</property>
-
+        <property name="hibernate.current_session_context_class">thread</property>
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <!-- Echo all executed SQL to stdout -->

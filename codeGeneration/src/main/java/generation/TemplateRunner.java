@@ -28,11 +28,15 @@ public class TemplateRunner {
         Template mappingTemplate = cfg.getTemplate("dao/mapping.tpl");
         Template repositoryTemplate = cfg.getTemplate("dao/repositoryImpl.tpl");
         Template repositoryInterfaceTemplate = cfg.getTemplate("dao/repository.tpl");
+
         Template beansDaoTemplate = cfg.getTemplate("initialization/beans.dao.tpl");
         Template hibernateUtilsTemplate = cfg.getTemplate("initialization/hibernateUtils.tpl");
+        Template sessionFactoryTemplate = cfg.getTemplate("initialization/session-factory.tpl");
+
         Template dataServiceImplTemplate = cfg.getTemplate("business/dataServiceImpl.tpl");
         Template dataServiceTemplate = cfg.getTemplate("business/dataService.tpl");
         Template dataServiceBeansTemplate = cfg.getTemplate("business/beans.dataservices.tpl");
+
         for (Table table: model.getTables()){
             GenerationModel<Table> generationModel = new GenerationModel<Table>(table, settings);
             processTemplateToPackage(entityTemplate, generationModel, settings.getEntityPackageName(), table.getClassName() + ".java");
@@ -47,6 +51,7 @@ public class TemplateRunner {
 
         GenerationModel<List<Table>> generationModel = new GenerationModel<List<Table>>(model.getTables(), settings);
         processTemplateToResources(beansDaoTemplate, generationModel, "beans.dao.xml");
+        processTemplateToResources(sessionFactoryTemplate, generationModel, "session-factory.xml");
         processTemplateToResources(dataServiceBeansTemplate, generationModel, "beans.dataservices.xml");
         processTemplateToPackage(hibernateUtilsTemplate, generationModel, settings.getUtilsPackageName(), "HibernateUtil.java");
     }

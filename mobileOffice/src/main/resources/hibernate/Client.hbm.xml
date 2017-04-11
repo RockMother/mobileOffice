@@ -12,6 +12,8 @@
         <property name="address" column="address"/>
         <property name="email" column="email"/>
         <property name="userId" column="user_id"/>
+        <property name="locked" column="locked"/>
+        <property name="lockedByAdmin" column="locked_by_admin"/>
         <set name="contractsById" inverse="true">
             <key>
                 <column name="client_id"/>

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 /**
  * Created by kiril_000 on 02.04.2017.
  */
+
 @Service
 public class RegistrationServiceImpl implements mobileoffice.business.contracts.RegistrationService {
     private UsersRepository usersRepository;

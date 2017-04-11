@@ -17,6 +17,7 @@ import java.util.List;
 /**
  * Created by kisc on 4/10/2017.
  */
+
 @Service
 public class ClientsServiceImpl implements mobileoffice.business.contracts.ClientsService {
 
@@ -46,7 +47,7 @@ public class ClientsServiceImpl implements mobileoffice.business.contracts.Clien
     public List<VContractWithTariff> getContracts(long clientId) throws Exception {
         List<Object> params = new ArrayList<>();
         params.add(clientId);
-        return vContractWithTariffRepository.findByParameters("client_id = ?", params);
+        return vContractWithTariffRepository.findByParameters("user_id = ?", params);
     }
 
     private Contract buildContract(long clientId, NewClientModel model){

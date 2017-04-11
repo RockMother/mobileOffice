@@ -30,4 +30,6 @@
     <sec:authentication-manager id="daoManager">
         <sec:authentication-provider user-service-ref="userService"></sec:authentication-provider>
     </sec:authentication-manager>
+
+    <import resource="classpath:session-factory.xml"/>
 </beans>

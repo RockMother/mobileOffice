@@ -7,6 +7,10 @@
         
         <property name="name" column="name"/>
         <property name="number" column="number"/>
+        <property name="isBlocked" column="is_blocked"/>
+        <property name="isAdminBlocker" column="is_admin_blocker"/>
         <property name="clientId" column="client_id"/>
+        <property name="userId" column="user_id"/>
+        <property name="tariffId" column="tariff_id"/>
     </class>
 </hibernate-mapping>

@@ -13,7 +13,7 @@ public class Users implements HasLongId, Serializable {
     private long id;
     private String userName;
     private String password;
-    private boolean enabled;
+    private Boolean enabled;
     private Collection<Authorities> authoritiessById;
     private Collection<Client> clientsById;
     private Collection<Manager> managersById;
@@ -39,11 +39,11 @@ public class Users implements HasLongId, Serializable {
     public void setPassword (String password) {
         this.password = password;
     }
-    public boolean getEnabled(){
+    public Boolean getEnabled(){
         return this.enabled;
     }
 
-    public void setEnabled (boolean enabled) {
+    public void setEnabled (Boolean enabled) {
         this.enabled = enabled;
     }
     public Collection<Authorities> getAuthoritiessById(){
