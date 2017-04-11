@@ -58,14 +58,16 @@ public class ContractController {
         VContractWithTariff contract = contractWithTariffDataService.getById(id);
         List<Options> selectedOptions = contractService.getContractOptions(contract.getId());
         model.addAttribute("contract", contract);
-        model.addAttribute("options", contractService.getAvaliableOptions(id, selectedOptions));
+        model.addAttribute("options", contractService.getAvailableOptions(id, selectedOptions));
         model.addAttribute("selectedOptions", selectedOptions);
         model.addAttribute("tariffs", tariffDataService.getAll());
         return "profile/contract";
     }
 
-    public String postEditContract(Model model, EditContractModel editContractModel){
-        return "redirect:/edit?id=" + editContractModel.getId();
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String postEditContract(EditContractModel editContractModel) throws Exception {
+        contractService.updateContractData(editContractModel);
+        return "redirect:/contract/edit?id=" + editContractModel.getId();
     }
 
 

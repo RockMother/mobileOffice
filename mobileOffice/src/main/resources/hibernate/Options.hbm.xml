@@ -5,8 +5,7 @@
             <generator class="identity"/>
         </id>
         
-        <property name="price" column="price"/>
-        <property name="intialPrice" column="intial_price"/>
+        <property name="initialPrice" column="initial_price"/>
         <property name="name" column="name"/>
         <set name="contractOptionRspsById" inverse="true">
             <key>

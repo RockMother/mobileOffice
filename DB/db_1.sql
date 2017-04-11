@@ -61,8 +61,7 @@ CREATE TABLE `contract` (
 
 CREATE TABLE `options` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `price` decimal(10,0) NOT NULL,
-  `intial_price` decimal(10,0) NOT NULL,
+  `initial_price` decimal(10,0) NOT NULL,
   `name` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;

@@ -11,8 +11,7 @@ import java.util.Collection;
 public class Options implements HasLongId, Serializable {
     public Options() { }
     private long id;
-    private Float price;
-    private Float intialPrice;
+    private Float initialPrice;
     private String name;
     private Collection<ContractOptionRsp> contractOptionRspsById;
     private Collection<TariffOptionsRsp> tariffOptionsRspsById;
@@ -24,19 +23,12 @@ public class Options implements HasLongId, Serializable {
     public void setId (long id) {
         this.id = id;
     }
-    public Float getPrice(){
-        return this.price;
+    public Float getInitialPrice(){
+        return this.initialPrice;
     }
 
-    public void setPrice (Float price) {
-        this.price = price;
-    }
-    public Float getIntialPrice(){
-        return this.intialPrice;
-    }
-
-    public void setIntialPrice (Float intialPrice) {
-        this.intialPrice = intialPrice;
+    public void setInitialPrice (Float initialPrice) {
+        this.initialPrice = initialPrice;
     }
     public String getName(){
         return this.name;

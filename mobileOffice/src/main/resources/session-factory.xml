@@ -17,7 +17,6 @@
                 <value>hibernate/TariffOptionsRsp.hbm.xml</value>
                 <value>hibernate/Users.hbm.xml</value>
                 <value>hibernate/VContractWithTariff.hbm.xml</value>
-                <value>hibernate/VTariffWithOptions.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">

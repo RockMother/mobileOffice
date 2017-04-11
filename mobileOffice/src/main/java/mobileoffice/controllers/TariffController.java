@@ -7,6 +7,7 @@ import mobileoffice.business.contracts.tariff.TariffService;
 import mobileoffice.dao.entities.Options;
 import mobileoffice.dao.entities.Tariff;
 import mobileoffice.models.TariffModel;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/tariffs")
+@Secured("ROLE_MANAGER")
 public class TariffController {
 
     private TariffOptionsRspDataService tariffOptionsRspDataService;

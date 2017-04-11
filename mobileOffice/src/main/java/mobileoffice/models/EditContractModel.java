@@ -1,5 +1,6 @@
 package mobileoffice.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  */
 public class EditContractModel {
     long id;
-    List<Long> selectedOptions;
+    List<Long> selectedOptions = new ArrayList<>();
     Long tariffId;
 
     public long getId() {

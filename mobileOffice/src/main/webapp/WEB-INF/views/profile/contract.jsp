@@ -26,7 +26,10 @@
                 <div class="input-wrapper">
                     <select type="text" name="tariffId" value="${contract.number}" value="${contract.tariffId}">
                         <c:forEach items="${tariffs}" var="tariff">
-                            <option name="${tariff.name}" value="${tariff.id}">${tariff.name}</option>
+                        <option name="${tariff.name}" value="${tariff.id}"
+                                <c:if test="${tariff.id == contract.tariffId}">selected</c:if> >
+                            ${tariff.name}
+                        </option>
                         </c:forEach>
                     </select>
                 </div>

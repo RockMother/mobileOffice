@@ -6,6 +6,7 @@ import mobileoffice.business.contracts.data.TariffDataService;
 import mobileoffice.business.contracts.data.VContractWithTariffDataService;
 import mobileoffice.dao.entities.Client;
 import mobileoffice.models.NewClientModel;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping("/clients")
+@Secured("ROLE_MANAGER")
 public class ClientsController {
 
     private ClientDataService clientDataService;

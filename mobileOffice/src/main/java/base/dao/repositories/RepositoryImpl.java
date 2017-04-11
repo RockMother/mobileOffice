@@ -60,14 +60,13 @@ public abstract class RepositoryImpl<T extends HasLongId> implements Repository<
         Session session = null;
         try {
             session = sessionFactory.openSession();
+            session.beginTransaction();
             return findByParameters(searchQuery, parameters, session);
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
         }finally {
-            if (session != null && session.isOpen()){
-                session.close();
-            }
+            session.close();
         }
     }
 
@@ -98,7 +97,10 @@ public abstract class RepositoryImpl<T extends HasLongId> implements Repository<
         Session session = null;
         try {
             session = sessionFactory.openSession();
-            return create(model, session);
+            session.beginTransaction();
+            create(model, session);
+            session.getTransaction().commit();
+            return model;
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
@@ -119,14 +121,14 @@ public abstract class RepositoryImpl<T extends HasLongId> implements Repository<
         Session session = null;
         try {
             session = sessionFactory.openSession();
+            session.beginTransaction();
             delete(id, session);
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
         }finally {
-            if (session != null && session.isOpen()){
-                session.close();
-            }
+            session.flush();
+            session.close();
         }
     }
 

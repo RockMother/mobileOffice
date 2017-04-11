@@ -35,8 +35,5 @@
 <bean id="vContractWithTariffRepository" class="mobileoffice.dao.repositories.VContractWithTariffRepositoryImpl">
 
     </bean>
-<bean id="vTariffWithOptionsRepository" class="mobileoffice.dao.repositories.VTariffWithOptionsRepositoryImpl">
-
-    </bean>
 
 </beans>

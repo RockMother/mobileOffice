@@ -11,5 +11,6 @@
     <c:if test="${loggedAsManager}">
         <div class="menu-item"><a href="/clients">Clients</a></div>
         <div class="menu-item"><a href="/tariffs">Tariffs</a></div>
+        <div class="menu-item"><a href="/options">Options</a></div>
     </c:if>
 </div>

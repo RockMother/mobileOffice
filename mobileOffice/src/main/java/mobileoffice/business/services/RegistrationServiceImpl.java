@@ -8,6 +8,7 @@ import mobileoffice.dao.entities.Manager;
 import mobileoffice.dao.entities.Users;
 import mobileoffice.dao.repositories.ManagerRepositoryImpl;
 import mobileoffice.models.RegistrationModel;
+import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 
 /**
