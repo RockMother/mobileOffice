@@ -22,17 +22,17 @@
           <div class="card-body">
             <div class="card-row">
               <div class="label">Tariff:</div>
-              <div class="value">${contract.name}</div>
+              <div class="value">${contract.tariffName}</div>
             </div>
           </div>
           <div class="footer-card">
-            <c:if test="${contract.isBlocked && contract.isAdminBlocker}">
+            <c:if test="${contract.isBlocked() && contract.isAdminBlocker()}">
               <div>Blocked by manager</div>
             </c:if>
-            <c:if test="${contract.isBlocked && !contract.isAdminBlocker}">
+            <c:if test="${contract.isBlocked() && !contract.isAdminBlocker()}">
               <a href="/contract/unblock?id=${contract.id}">Unblock</a>
             </c:if>
-            <c:if test="${!contract.isBlocked}">
+            <c:if test="${!contract.isBlocked()}">
               <a href="/contract/block?id=${contract.id}">Block</a>
             </c:if>
           </div>

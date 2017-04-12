@@ -1,6 +1,7 @@
 package mobileoffice.controllers;
 
 import mobileoffice.business.contracts.ClientsService;
+import mobileoffice.business.contracts.ContractService;
 import mobileoffice.models.security.UserDetailsImpl;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
@@ -16,15 +17,15 @@ import java.security.Principal;
 @Controller
 @RequestMapping("/profile")
 public class ClientProfileController {
-    private ClientsService clientsService;
+    private ContractService contractService;
 
-    public ClientProfileController(ClientsService clientsService){
-        this.clientsService = clientsService;
+    public ClientProfileController(ContractService contractService){
+        this.contractService = contractService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public String get(Model model, Principal principal) throws Exception {
-        model.addAttribute("contracts", clientsService.getContracts(((UserDetailsImpl) ((UsernamePasswordAuthenticationToken) principal).getPrincipal()).getId()));
+        model.addAttribute("contracts", contractService.getUserContracts(((UserDetailsImpl) ((UsernamePasswordAuthenticationToken) principal).getPrincipal()).getId()));
         return "profile/profile";
     }
 }

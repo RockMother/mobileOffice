@@ -1,6 +1,7 @@
 package mobileoffice.controllers;
 
 import mobileoffice.business.contracts.ClientsService;
+import mobileoffice.business.contracts.ContractService;
 import mobileoffice.business.contracts.data.ClientDataService;
 import mobileoffice.business.contracts.data.TariffDataService;
 import mobileoffice.business.contracts.data.VContractWithTariffDataService;
@@ -22,16 +23,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ClientsController {
 
     private ClientDataService clientDataService;
+    private ContractService contractService;
     private VContractWithTariffDataService contractWithTariffDataService;
     private ClientsService clientsService;
     private TariffDataService tariffDataService;
 
     public ClientsController(ClientDataService clientDataService,
+                             ContractService contractService,
                              VContractWithTariffDataService contractWithTariffDataService,
                              ClientsService clientsService,
                              TariffDataService tariffDataService){
 
         this.clientDataService = clientDataService;
+        this.contractService = contractService;
         this.contractWithTariffDataService = contractWithTariffDataService;
         this.clientsService = clientsService;
         this.tariffDataService = tariffDataService;
@@ -60,7 +64,7 @@ public class ClientsController {
     public String edit(@RequestParam long id, Model model) throws Exception {
         Client client = clientDataService.getById(id);
         model.addAttribute("user", client);
-        model.addAttribute("contracts", clientsService.getContracts(client.getId()));
+        model.addAttribute("contracts", contractService.getClientContracts(client.getId()));
         model.addAttribute("tariffs", tariffDataService.getAll());
         return "clients/edit";
     }

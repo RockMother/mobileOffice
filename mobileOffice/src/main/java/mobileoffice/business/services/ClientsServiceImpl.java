@@ -1,13 +1,14 @@
 package mobileoffice.business.services;
 
+import mobileoffice.business.contracts.ContractService;
+import mobileoffice.business.contracts.OptionsService;
 import mobileoffice.business.contracts.RegistrationService;
+import mobileoffice.business.contracts.tariff.TariffService;
 import mobileoffice.dao.contracts.ClientRepository;
 import mobileoffice.dao.contracts.ContractRepository;
 import mobileoffice.dao.contracts.VContractWithTariffRepository;
-import mobileoffice.dao.entities.Client;
-import mobileoffice.dao.entities.Contract;
-import mobileoffice.dao.entities.Users;
-import mobileoffice.dao.entities.VContractWithTariff;
+import mobileoffice.dao.entities.*;
+import mobileoffice.models.ContractModel;
 import mobileoffice.models.NewClientModel;
 import org.springframework.stereotype.Service;
 
@@ -22,16 +23,25 @@ import java.util.List;
 public class ClientsServiceImpl implements mobileoffice.business.contracts.ClientsService {
 
     private ContractRepository contractRepository;
+    private OptionsService optionsService;
+    private TariffService tariffService;
+    private ContractService contractService;
     private VContractWithTariffRepository vContractWithTariffRepository;
     private final RegistrationService registrationService;
     private ClientRepository clientRepository;
 
     public ClientsServiceImpl(ClientRepository clientRepository,
                               ContractRepository contractRepository,
+                              OptionsService optionsService,
+                              TariffService tariffService,
+                              ContractService contractService,
                               VContractWithTariffRepository vContractWithTariffRepository,
                               RegistrationService registrationService){
         this.clientRepository = clientRepository;
         this.contractRepository = contractRepository;
+        this.optionsService = optionsService;
+        this.tariffService = tariffService;
+        this.contractService = contractService;
         this.vContractWithTariffRepository = vContractWithTariffRepository;
         this.registrationService = registrationService;
     }
@@ -40,14 +50,9 @@ public class ClientsServiceImpl implements mobileoffice.business.contracts.Clien
     public long createClient(NewClientModel model) throws Exception {
         Users user = registrationService.registerNewUser(model);
         Client client = clientRepository.create(buildClient(user.getId(), model));
-        contractRepository.create(buildContract(client.getId(), model));
+        Contract contract = contractRepository.create(buildContract(client.getId(), model));
+        contractService.createDefaultOptionList(contract.getId(), contract.getTariffId());
         return client.getId();
-    }
-
-    public List<VContractWithTariff> getContracts(long clientId) throws Exception {
-        List<Object> params = new ArrayList<>();
-        params.add(clientId);
-        return vContractWithTariffRepository.findByParameters("user_id = ?", params);
     }
 
     private Contract buildContract(long clientId, NewClientModel model){
@@ -59,8 +64,6 @@ public class ClientsServiceImpl implements mobileoffice.business.contracts.Clien
         contract.setIsAdminBlocker(false);
         return contract;
     }
-
-
 
     private Client buildClient(long userId, NewClientModel model) {
         Client client = new Client();

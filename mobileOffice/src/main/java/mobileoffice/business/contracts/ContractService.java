@@ -1,6 +1,6 @@
 package mobileoffice.business.contracts;
 
-import mobileoffice.dao.entities.Options;
+import mobileoffice.models.ContractModel;
 import mobileoffice.models.EditContractModel;
 
 import java.util.List;
@@ -11,7 +11,9 @@ import java.util.List;
 public interface ContractService {
     void blockContractByClient(long id) throws Exception;
     void unblockContractByClient(long id) throws Exception;
-    List<Options> getContractOptions(long contractId) throws Exception;
-    List<Options> getAvailableOptions(long contractId, List<Options> selectedOptions) throws Exception;
-    void updateContractData(EditContractModel editContractModel) throws Exception;
+    void updateContractData(EditContractModel editContractModel, boolean asManager) throws Exception;
+    void createDefaultOptionList(long contractId, long tariffId) throws Exception;
+    List<ContractModel> getUserContracts(long userId) throws Exception;
+    List<ContractModel> getClientContracts(long clientId) throws Exception;
+    ContractModel getContractModel(long id) throws Exception;
 }

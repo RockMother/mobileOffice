@@ -25,14 +25,5 @@
     <div class="label">Email:</div>
     <div class="input-wrapper"><input type='text' name='email' value="${user.email}"/></div>
 </div>
-<c:if test="${not empty contracts}">
-    <div class="input-container">
-        <div class="label">Contracts:</div>
-        <div class="input-wrapper">
-            <c:forEach items="${contracts}" var="contract">
-                <%@include file="../common/contractForm.jsp"%>
-            </c:forEach>
-        </div>
-    </div>
-</c:if>
+
 

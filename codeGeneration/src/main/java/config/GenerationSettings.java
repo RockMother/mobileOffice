@@ -4,8 +4,8 @@ package config;
  * Created by kisc on 3/23/2017.
  */
 public class GenerationSettings {
-    private final String projectRoot = "C:\\Projects\\mobileOffice\\mobileOffice\\src\\main\\java\\";
-    private final String resourceRoot = "C:\\Projects\\mobileOffice\\mobileOffice\\src\\main\\resources\\";
+    private final String projectRoot = "D:\\Projects\\mobileOffice\\mobileOffice\\src\\main\\java\\";
+    private final String resourceRoot = "D:\\Projects\\mobileOffice\\mobileOffice\\src\\main\\resources\\";
     private final String entityPackageName = "mobileoffice.dao.entities";
     private final String repositoryPackageName = "mobileoffice.dao.repositories";
     private final String repositoryInterfacePackageName = "mobileoffice.dao.contracts";

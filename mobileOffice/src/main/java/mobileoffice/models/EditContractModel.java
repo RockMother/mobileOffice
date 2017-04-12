@@ -7,9 +7,11 @@ import java.util.List;
  * Created by kisc on 4/11/2017.
  */
 public class EditContractModel {
-    long id;
-    List<Long> selectedOptions = new ArrayList<>();
-    Long tariffId;
+    private long id;
+    private List<Long> selectedOptions = new ArrayList<>();
+    private Long tariffId;
+    private String blocked;
+    private Long clientId;
 
     public long getId() {
         return id;
@@ -33,5 +35,21 @@ public class EditContractModel {
 
     public void setTariffId(Long tariffId) {
         this.tariffId = tariffId;
+    }
+
+    public boolean isBlocked() {
+        return blocked != null && blocked.equals("true");
+    }
+
+    public void setBlocked(String blocked) {
+        this.blocked = blocked;
+    }
+
+    public Long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
     }
 }

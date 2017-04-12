@@ -1,0 +1,13 @@
+.contracts{
+    display: flex;
+    flex-direction: row;
+}
+.client-fields-wrapper{
+    display: flex;
+    flex-direction: column
+}
+
+.form-wrapper.contract-edit{
+    height: initial;
+    width: initial;
+}

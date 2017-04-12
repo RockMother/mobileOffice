@@ -7,6 +7,8 @@
     <title>Mobile office</title>
     <link type="text/css" rel="stylesheet" href="/resources/css/main.css"/>
     <link type="text/css" rel="stylesheet" href="/resources/css/form.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/css/contracts.css"/>
+    <script src="/resources/js/multiple-select-list.js"></script>
 </head>
 <body>
 <div class="main-content">
@@ -15,15 +17,25 @@
         <c:import url="../mainmenu.jsp"></c:import>
     </c:if>
     <div class="form-wrapper new-client-form">
-        <form action="/clients/add" method="post">
-            <c:if test="${empty user}">
-                <c:import url="../common/userFields.jsp"/>
-                <c:import url="../manager/clientFields.jsp"/>
-            </c:if>
-            <c:if test="${not empty user}">
-                <c:import url="../manager/editClientFields.jsp"/>
-            </c:if>
-        </form>
+        <c:if test="${empty user}">
+            <form action="/clients/add" method="post">
+            <c:import url="../common/userFields.jsp"/>
+            <c:import url="../manager/clientFields.jsp"/>
+            </form>
+        </c:if>
+        <c:if test="${not empty user}">
+            <div class="client-fields-wrapper">
+            <c:import url="../manager/editClientFields.jsp"/>
+            </div>
+        </c:if>
+        <c:if test="${not empty contracts}">
+            <h3>Contracts</h3>
+            <div class="contracts">
+                <c:forEach items="${contracts}" var="contract">
+                    <%@include file="../common/contractForm.jsp"%>
+                </c:forEach>
+            </div>
+        </c:if>
     </div>
 </div>
 </body>

@@ -3,8 +3,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
 }
 .form-wrapper.tariffs-form, .form-wrapper.options-form{
     align-items: flex-start;
@@ -61,6 +60,9 @@
 .registration-form.new-client{
     height: 400px;
 }
-
+.form-wrapper.login-form{
+    justify-content: center;
+    align-items: center;
+}
 
 

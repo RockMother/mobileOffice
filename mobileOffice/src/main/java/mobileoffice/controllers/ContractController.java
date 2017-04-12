@@ -7,13 +7,18 @@ import mobileoffice.business.contracts.data.TariffDataService;
 import mobileoffice.business.contracts.data.VContractWithTariffDataService;
 import mobileoffice.dao.entities.Options;
 import mobileoffice.dao.entities.VContractWithTariff;
+import mobileoffice.models.ContractModel;
 import mobileoffice.models.EditContractModel;
+import mobileoffice.models.security.UserDetailsImpl;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -35,7 +40,6 @@ public class ContractController {
                               OptionsDataService optionsDataService
     ){
         this.contractService = contractService;
-
         this.contractWithTariffDataService = contractWithTariffDataService;
         this.tariffDataService = tariffDataService;
         this.contractOptionRspDataService = contractOptionRspDataService;
@@ -55,19 +59,26 @@ public class ContractController {
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String getEditContract(Model model, @RequestParam long id) throws Exception {
-        VContractWithTariff contract = contractWithTariffDataService.getById(id);
-        List<Options> selectedOptions = contractService.getContractOptions(contract.getId());
-        model.addAttribute("contract", contract);
-        model.addAttribute("options", contractService.getAvailableOptions(id, selectedOptions));
-        model.addAttribute("selectedOptions", selectedOptions);
+        model.addAttribute("contract", contractService.getContractModel(id));
         model.addAttribute("tariffs", tariffDataService.getAll());
         return "profile/contract";
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String postEditContract(EditContractModel editContractModel) throws Exception {
-        contractService.updateContractData(editContractModel);
-        return "redirect:/contract/edit?id=" + editContractModel.getId();
+    public String postEditContract(EditContractModel editContractModel, Principal principal) throws Exception {
+        UserDetailsImpl userDetails = (UserDetailsImpl) ((UsernamePasswordAuthenticationToken) principal).getPrincipal();
+        boolean asManager = userDetails.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_MANAGER"));
+        VContractWithTariff contract = contractWithTariffDataService.getById(editContractModel.getId());
+        if (contract.getIsBlocked() && contract.getIsAdminBlocker() && !asManager){
+            throw new AccessDeniedException("Access is denied");
+        }
+
+        contractService.updateContractData(editContractModel, asManager);
+        if (!asManager) {
+            return "redirect:/contract/edit?id=" + editContractModel.getId();
+        } else {
+            return "redirect:/clients/edit?id=" + editContractModel.getClientId();
+        }
     }
 
 
