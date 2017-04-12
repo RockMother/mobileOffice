@@ -15,7 +15,7 @@
     <c:if test="${logged}">
         <c:import url="../mainmenu.jsp"></c:import>
     </c:if>
-    <c:import url="../common/contractForm.jsp"/>
+    <%@include file="../common/contractForm.jsp"%>
 </div>
 </body>
 </html>
