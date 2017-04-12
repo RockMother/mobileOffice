@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class RepositoryImpl<T extends HasLongId> implements Repository<T> {
@@ -43,6 +44,18 @@ public abstract class RepositoryImpl<T extends HasLongId> implements Repository<
                 session.close();
             }
         }
+    }
+
+    public List<T> findByParameter(String searchQuery, Object parameter, Session session) throws Exception {
+        List<Object> params = new ArrayList<>();
+        params.add(parameter);
+        return findByParameters(searchQuery, params, session);
+    }
+
+    public List<T> findByParameter(String searchQuery, Object parameter) throws Exception {
+        List<Object> params = new ArrayList<>();
+        params.add(parameter);
+        return findByParameters(searchQuery, params);
     }
 
     public List<T> findByParameters(String searchQuery, List<Object> parameters, Session session) {
@@ -105,10 +118,13 @@ public abstract class RepositoryImpl<T extends HasLongId> implements Repository<
             e.printStackTrace();
             throw e;
         }finally {
-            if (session != null && session.isOpen()){
-                session.close();
-            }
+
+            session.close();
         }
+    }
+
+    public void delete(T entity, Session session){
+        session.delete(entity);
     }
 
     public void delete(long id, Session session) throws IllegalAccessException, InstantiationException {
@@ -123,14 +139,15 @@ public abstract class RepositoryImpl<T extends HasLongId> implements Repository<
             session = sessionFactory.openSession();
             session.beginTransaction();
             delete(id, session);
+            session.flush();
         } catch (Exception e) {
             e.printStackTrace();
             throw e;
         }finally {
-            session.flush();
             session.close();
         }
     }
+
 
     public void update(T current, Session session) {
         session.save(current);

@@ -81,16 +81,16 @@ public class ForeignKey extends BaseNamedObject {
 
     public String getKeyColumnName(){
         if (isOneToMany()){
-            return String.format("%ssById", this.table.getCodeName());
+            return String.format("%ssBy%s", this.table.getCodeName(), this.column.getClassName());
         } else {
-            return String.format("%sBy%sId", this.table.getCodeName(), this.table.getClassName());
+            return String.format("%sBy%s", this.table.getCodeName(), this.refColumn.getClassName());
         }
     }
     public String getKeyColumnNameForProperties(){
         if (isOneToMany()){
-            return String.format("%ssById", this.table.getClassName());
+            return String.format("%ssBy%s", this.table.getClassName(), this.column.getClassName());
         } else {
-            return String.format("%sBy%sId", this.table.getClassName(), this.table.getClassName());
+            return String.format("%sBy%s", this.table.getClassName(), this.refColumn.getClassName());
         }
     }
 }

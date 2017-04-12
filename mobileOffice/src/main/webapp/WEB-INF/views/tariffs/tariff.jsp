@@ -5,8 +5,8 @@
 <html>
 <head>
   <title>Mobile office</title>
-  <link type="text/css" rel="stylesheet" href="/resources/main.css"/>
-  <link type="text/css" rel="stylesheet" href="/resources/cards.css"/>
+  <link type="text/css" rel="stylesheet" href="/resources/css/main.css"/>
+  <link type="text/css" rel="stylesheet" href="/resources/css/cards.css"/>
 </head>
 <body>
 <div class="main-content">

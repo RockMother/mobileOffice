@@ -7,8 +7,8 @@
 <html>
 <head>
     <title>Title</title>
-    <link type="text/css" rel="stylesheet" href="/resources/main.css"/>
-    <link type="text/css" rel="stylesheet" href="/resources/form.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/css/main.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/css/form.css"/>
 </head>
 <body>
 <div class="form-wrapper">

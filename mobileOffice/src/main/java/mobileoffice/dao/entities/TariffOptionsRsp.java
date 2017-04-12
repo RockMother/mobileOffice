@@ -14,7 +14,7 @@ public class TariffOptionsRsp implements HasLongId, Serializable {
     private long tariffId;
     private long tariffOptionId;
     private Tariff tariffByTariffId;
-    private Options optionsByOptionsId;
+    private Options optionsByTariffOptionId;
 
     public long getId(){
         return this.id;
@@ -44,11 +44,11 @@ public class TariffOptionsRsp implements HasLongId, Serializable {
     public void setTariffByTariffId (Tariff tariffByTariffId) {
         this.tariffByTariffId = tariffByTariffId;
     }
-    public Options getOptionsByOptionsId(){
-        return this.optionsByOptionsId;
+    public Options getOptionsByTariffOptionId(){
+        return this.optionsByTariffOptionId;
     }
 
-    public void setOptionsByOptionsId (Options optionsByOptionsId) {
-        this.optionsByOptionsId = optionsByOptionsId;
+    public void setOptionsByTariffOptionId (Options optionsByTariffOptionId) {
+        this.optionsByTariffOptionId = optionsByTariffOptionId;
     }
 }

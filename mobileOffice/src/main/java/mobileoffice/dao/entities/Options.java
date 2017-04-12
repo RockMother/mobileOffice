@@ -13,8 +13,10 @@ public class Options implements HasLongId, Serializable {
     private long id;
     private Float initialPrice;
     private String name;
-    private Collection<ContractOptionRsp> contractOptionRspsById;
-    private Collection<TariffOptionsRsp> tariffOptionsRspsById;
+    private Collection<ContractOptionRsp> contractOptionRspsByOptionId;
+    private Collection<OptionRelationsRsp> optionRelationsRspsByOptionMainId;
+    private Collection<OptionRelationsRsp> optionRelationsRspsByOptionSecondId;
+    private Collection<TariffOptionsRsp> tariffOptionsRspsByTariffOptionId;
 
     public long getId(){
         return this.id;
@@ -37,18 +39,32 @@ public class Options implements HasLongId, Serializable {
     public void setName (String name) {
         this.name = name;
     }
-    public Collection<ContractOptionRsp> getContractOptionRspsById(){
-        return this.contractOptionRspsById;
+    public Collection<ContractOptionRsp> getContractOptionRspsByOptionId(){
+        return this.contractOptionRspsByOptionId;
     }
 
-    public void setContractOptionRspsById (Collection<ContractOptionRsp> contractOptionRspsById) {
-        this.contractOptionRspsById = contractOptionRspsById;
+    public void setContractOptionRspsByOptionId (Collection<ContractOptionRsp> contractOptionRspsByOptionId) {
+        this.contractOptionRspsByOptionId = contractOptionRspsByOptionId;
     }
-    public Collection<TariffOptionsRsp> getTariffOptionsRspsById(){
-        return this.tariffOptionsRspsById;
+    public Collection<OptionRelationsRsp> getOptionRelationsRspsByOptionMainId(){
+        return this.optionRelationsRspsByOptionMainId;
     }
 
-    public void setTariffOptionsRspsById (Collection<TariffOptionsRsp> tariffOptionsRspsById) {
-        this.tariffOptionsRspsById = tariffOptionsRspsById;
+    public void setOptionRelationsRspsByOptionMainId (Collection<OptionRelationsRsp> optionRelationsRspsByOptionMainId) {
+        this.optionRelationsRspsByOptionMainId = optionRelationsRspsByOptionMainId;
+    }
+    public Collection<OptionRelationsRsp> getOptionRelationsRspsByOptionSecondId(){
+        return this.optionRelationsRspsByOptionSecondId;
+    }
+
+    public void setOptionRelationsRspsByOptionSecondId (Collection<OptionRelationsRsp> optionRelationsRspsByOptionSecondId) {
+        this.optionRelationsRspsByOptionSecondId = optionRelationsRspsByOptionSecondId;
+    }
+    public Collection<TariffOptionsRsp> getTariffOptionsRspsByTariffOptionId(){
+        return this.tariffOptionsRspsByTariffOptionId;
+    }
+
+    public void setTariffOptionsRspsByTariffOptionId (Collection<TariffOptionsRsp> tariffOptionsRspsByTariffOptionId) {
+        this.tariffOptionsRspsByTariffOptionId = tariffOptionsRspsByTariffOptionId;
     }
 }

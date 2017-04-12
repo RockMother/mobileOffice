@@ -20,7 +20,7 @@ public class Client implements HasLongId, Serializable {
     private long userId;
     private Boolean locked;
     private Boolean lockedByAdmin;
-    private Collection<Contract> contractsById;
+    private Collection<Contract> contractsByClientId;
 
     public long getId(){
         return this.id;
@@ -92,11 +92,11 @@ public class Client implements HasLongId, Serializable {
     public void setLockedByAdmin (Boolean lockedByAdmin) {
         this.lockedByAdmin = lockedByAdmin;
     }
-    public Collection<Contract> getContractsById(){
-        return this.contractsById;
+    public Collection<Contract> getContractsByClientId(){
+        return this.contractsByClientId;
     }
 
-    public void setContractsById (Collection<Contract> contractsById) {
-        this.contractsById = contractsById;
+    public void setContractsByClientId (Collection<Contract> contractsByClientId) {
+        this.contractsByClientId = contractsByClientId;
     }
 }

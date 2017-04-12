@@ -9,7 +9,7 @@ public class Column extends BaseNamedObject {
     private final String name;
     private String dataType;
     private boolean isPrimaryKey;
-    private boolean autoIncrement;
+    private boolean autoIncrement = false;
     private final boolean isForeignKey;
     private Table refTable;
 

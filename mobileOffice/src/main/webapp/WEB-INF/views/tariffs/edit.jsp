@@ -5,8 +5,9 @@
 <html>
 <head>
   <title>Mobile office</title>
-  <link type="text/css" rel="stylesheet" href="/resources/main.css"/>
-  <link type="text/css" rel="stylesheet" href="/resources/form.css"/>
+  <link type="text/css" rel="stylesheet" href="/resources/css/main.css"/>
+  <link type="text/css" rel="stylesheet" href="/resources/css/form.css"/>
+  <script src="/resources/js/multiple-select-list.js"></script>
 </head>
 <body>
 <div class="main-content">
@@ -42,26 +43,9 @@
           </div>
           <select multiple id="selectedOptions" name="selectedOptions">
             <c:forEach items="${selectedOptions}" var="option">
-              <option name="${option.name}" value="${option.id}">${option.name}</option>
+              <option name="${option.name}" value="${option.id}" selected>${option.name}</option>
             </c:forEach>
           </select>
-          <script>
-            function addSelectedItems(source, target){
-              var sourceList = document.getElementById(source);
-              var targetList = document.getElementById(target);
-              var selectedValues = sourceList.value || [];
-              if (!(selectedValues instanceof Array)){
-                selectedValues = [selectedValues];
-              }
-              for (var i = 0; i < sourceList.children.length; i++) {
-                var childNode = sourceList.children[i];
-                if (selectedValues.indexOf(childNode.value) !== -1){
-                  sourceList.removeChild(childNode);
-                  targetList.appendChild(childNode);
-                }
-              }
-            }
-          </script>
         </div>
       </div>
       <div>

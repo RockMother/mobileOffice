@@ -14,9 +14,9 @@ public class Users implements HasLongId, Serializable {
     private String userName;
     private String password;
     private Boolean enabled;
-    private Collection<Authorities> authoritiessById;
-    private Collection<Client> clientsById;
-    private Collection<Manager> managersById;
+    private Collection<Authorities> authoritiessByUserId;
+    private Collection<Client> clientsByUserId;
+    private Collection<Manager> managersByUserId;
 
     public long getId(){
         return this.id;
@@ -46,25 +46,25 @@ public class Users implements HasLongId, Serializable {
     public void setEnabled (Boolean enabled) {
         this.enabled = enabled;
     }
-    public Collection<Authorities> getAuthoritiessById(){
-        return this.authoritiessById;
+    public Collection<Authorities> getAuthoritiessByUserId(){
+        return this.authoritiessByUserId;
     }
 
-    public void setAuthoritiessById (Collection<Authorities> authoritiessById) {
-        this.authoritiessById = authoritiessById;
+    public void setAuthoritiessByUserId (Collection<Authorities> authoritiessByUserId) {
+        this.authoritiessByUserId = authoritiessByUserId;
     }
-    public Collection<Client> getClientsById(){
-        return this.clientsById;
-    }
-
-    public void setClientsById (Collection<Client> clientsById) {
-        this.clientsById = clientsById;
-    }
-    public Collection<Manager> getManagersById(){
-        return this.managersById;
+    public Collection<Client> getClientsByUserId(){
+        return this.clientsByUserId;
     }
 
-    public void setManagersById (Collection<Manager> managersById) {
-        this.managersById = managersById;
+    public void setClientsByUserId (Collection<Client> clientsByUserId) {
+        this.clientsByUserId = clientsByUserId;
+    }
+    public Collection<Manager> getManagersByUserId(){
+        return this.managersByUserId;
+    }
+
+    public void setManagersByUserId (Collection<Manager> managersByUserId) {
+        this.managersByUserId = managersByUserId;
     }
 }

@@ -20,6 +20,9 @@
 <bean id="managerDataService" class="mobileoffice.business.services.data.ManagerDataServiceImpl">
     <constructor-arg ref="managerRepository"/>
 </bean>
+<bean id="optionRelationsRspDataService" class="mobileoffice.business.services.data.OptionRelationsRspDataServiceImpl">
+    <constructor-arg ref="optionRelationsRspRepository"/>
+</bean>
 <bean id="optionsDataService" class="mobileoffice.business.services.data.OptionsDataServiceImpl">
     <constructor-arg ref="optionsRepository"/>
 </bean>

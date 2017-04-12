@@ -16,6 +16,7 @@ public class HibernateUtil {
             cfg.addResource("hibernate/Contract.hbm.xml");
             cfg.addResource("hibernate/ContractOptionRsp.hbm.xml");
             cfg.addResource("hibernate/Manager.hbm.xml");
+            cfg.addResource("hibernate/OptionRelationsRsp.hbm.xml");
             cfg.addResource("hibernate/Options.hbm.xml");
             cfg.addResource("hibernate/Tariff.hbm.xml");
             cfg.addResource("hibernate/TariffOptionsRsp.hbm.xml");

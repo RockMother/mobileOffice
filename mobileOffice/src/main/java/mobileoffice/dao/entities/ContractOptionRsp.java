@@ -14,7 +14,7 @@ public class ContractOptionRsp implements HasLongId, Serializable {
     private long contractId;
     private long optionId;
     private Contract contractByContractId;
-    private Options optionsByOptionsId;
+    private Options optionsByOptionId;
 
     public long getId(){
         return this.id;
@@ -44,11 +44,11 @@ public class ContractOptionRsp implements HasLongId, Serializable {
     public void setContractByContractId (Contract contractByContractId) {
         this.contractByContractId = contractByContractId;
     }
-    public Options getOptionsByOptionsId(){
-        return this.optionsByOptionsId;
+    public Options getOptionsByOptionId(){
+        return this.optionsByOptionId;
     }
 
-    public void setOptionsByOptionsId (Options optionsByOptionsId) {
-        this.optionsByOptionsId = optionsByOptionsId;
+    public void setOptionsByOptionId (Options optionsByOptionId) {
+        this.optionsByOptionId = optionsByOptionId;
     }
 }

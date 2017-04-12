@@ -13,8 +13,8 @@ public class Tariff implements HasLongId, Serializable {
     private long id;
     private String name;
     private Float price;
-    private Collection<Contract> contractsById;
-    private Collection<TariffOptionsRsp> tariffOptionsRspsById;
+    private Collection<Contract> contractsByTariffId;
+    private Collection<TariffOptionsRsp> tariffOptionsRspsByTariffId;
 
     public long getId(){
         return this.id;
@@ -37,18 +37,18 @@ public class Tariff implements HasLongId, Serializable {
     public void setPrice (Float price) {
         this.price = price;
     }
-    public Collection<Contract> getContractsById(){
-        return this.contractsById;
+    public Collection<Contract> getContractsByTariffId(){
+        return this.contractsByTariffId;
     }
 
-    public void setContractsById (Collection<Contract> contractsById) {
-        this.contractsById = contractsById;
+    public void setContractsByTariffId (Collection<Contract> contractsByTariffId) {
+        this.contractsByTariffId = contractsByTariffId;
     }
-    public Collection<TariffOptionsRsp> getTariffOptionsRspsById(){
-        return this.tariffOptionsRspsById;
+    public Collection<TariffOptionsRsp> getTariffOptionsRspsByTariffId(){
+        return this.tariffOptionsRspsByTariffId;
     }
 
-    public void setTariffOptionsRspsById (Collection<TariffOptionsRsp> tariffOptionsRspsById) {
-        this.tariffOptionsRspsById = tariffOptionsRspsById;
+    public void setTariffOptionsRspsByTariffId (Collection<TariffOptionsRsp> tariffOptionsRspsByTariffId) {
+        this.tariffOptionsRspsByTariffId = tariffOptionsRspsByTariffId;
     }
 }

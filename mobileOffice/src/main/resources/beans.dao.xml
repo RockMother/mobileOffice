@@ -20,6 +20,9 @@
 <bean id="managerRepository" class="mobileoffice.dao.repositories.ManagerRepositoryImpl">
 
     </bean>
+<bean id="optionRelationsRspRepository" class="mobileoffice.dao.repositories.OptionRelationsRspRepositoryImpl">
+
+    </bean>
 <bean id="optionsRepository" class="mobileoffice.dao.repositories.OptionsRepositoryImpl">
 
     </bean>

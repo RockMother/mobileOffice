@@ -12,6 +12,7 @@
                 <value>hibernate/Contract.hbm.xml</value>
                 <value>hibernate/ContractOptionRsp.hbm.xml</value>
                 <value>hibernate/Manager.hbm.xml</value>
+                <value>hibernate/OptionRelationsRsp.hbm.xml</value>
                 <value>hibernate/Options.hbm.xml</value>
                 <value>hibernate/Tariff.hbm.xml</value>
                 <value>hibernate/TariffOptionsRsp.hbm.xml</value>

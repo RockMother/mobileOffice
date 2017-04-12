@@ -3,7 +3,9 @@
     <class name="${settings.entityPackageName}.${model.className}" table="${model.name}" schema="${model.schemaName}">
         <#list model.columns as column><#if column.isPrimaryKey()>
         <id name="${column.codeName}" column="${column.name}">
-            <#if column.autoIncrement><generator class="identity"/></#if>
+            <#if column.isAutoIncrement()>
+                <generator class="identity"/>
+            </#if>
         </id>
         </#if></#list>
         <#list model.columns as column>

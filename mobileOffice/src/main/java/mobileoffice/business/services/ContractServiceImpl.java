@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Created by kisc on 4/11/2017.
@@ -57,7 +56,7 @@ public class ContractServiceImpl implements mobileoffice.business.contracts.Cont
     @Override
     public List<Options> getContractOptions(long contractId) throws Exception {
         Contract contract = contractRepository.getById(contractId);
-        return contract.getContractOptionRspsById().stream().map(ContractOptionRsp::getOptionsByOptionsId).collect(Collectors.toList());
+        return contract.getContractOptionRspsByContractId().stream().map(ContractOptionRsp::getOptionsByOptionId).collect(Collectors.toList());
     }
 
     @Override

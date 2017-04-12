@@ -88,9 +88,18 @@ CREATE TABLE `tariff_options_rsp` (
   CONSTRAINT `fk_tariff_option_id` FOREIGN KEY (`tariff_option_id`) REFERENCES `options` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE VIEW `mobileoffice`.`v_contract_with_tariff` AS select `c`.`id` AS `id`,`t`.`name` AS `name`,`c`.`number` AS `number`,`c`.`is_blocked` AS `is_blocked`,`c`.`is_admin_blocker` AS `is_admin_blocker`,`c`.`client_id` AS `client_id`,`cl`.`user_id` AS `user_id`, t.id as tariff_id from ((`mobileoffice`.`contract` `c` join `mobileoffice`.`tariff` `t` on((`c`.`tariff_id` = `t`.`id`))) join `mobileoffice`.`client` `cl` on((`cl`.`id` = `c`.`client_id`)));
+CREATE TABLE mobileoffice.option_relations_rsp (
+   id BIGINT AUTO_INCREMENT NOT NULL,
+   required BIT,
+   incompatible BIT,
+   option_main_id BIGINT NOT NULL,
+   option_second_id BIGINT NOT NULL,
+  CONSTRAINT fk_option_main_options_id FOREIGN KEY (option_main_id) REFERENCES mobileoffice.options (id) ON UPDATE RESTRICT ON DELETE RESTRICT,
+  CONSTRAINT fk_option_second_options_id FOREIGN KEY (option_second_id) REFERENCES mobileoffice.options (id) ON UPDATE RESTRICT ON DELETE RESTRICT,
+  PRIMARY KEY (id)
+) ENGINE = InnoDB ROW_FORMAT = DEFAULT;
 
-CREATE  VIEW `mobileoffice`.`v_tariff_with_options` AS select `t`.`name` AS `name`,`t`.`id` AS `id`,`t`.`price` AS `price`,`opt`.`name` AS `option_name`,`opt`.`price` AS `OPTION_PRICE`,`opt`.`intial_price` AS `intial_price` from ((`mobileoffice`.`tariff` `t` left join `mobileoffice`.`tariff_options_rsp` `rsp` on((`t`.`id` = `rsp`.`tariff_id`))) left join `mobileoffice`.`options` `opt` on((`opt`.`id` = `rsp`.`tariff_option_id`)));
+CREATE VIEW `mobileoffice`.`v_contract_with_tariff` AS select `c`.`id` AS `id`,`t`.`name` AS `name`,`c`.`number` AS `number`,`c`.`is_blocked` AS `is_blocked`,`c`.`is_admin_blocker` AS `is_admin_blocker`,`c`.`client_id` AS `client_id`,`cl`.`user_id` AS `user_id`, t.id as tariff_id from ((`mobileoffice`.`contract` `c` join `mobileoffice`.`tariff` `t` on((`c`.`tariff_id` = `t`.`id`))) join `mobileoffice`.`client` `cl` on((`cl`.`id` = `c`.`client_id`)));
 
 
 

@@ -9,7 +9,7 @@ import java.util.Set;
 public class TariffModel {
     private String name;
     private Float price;
-    private Set<Integer> selectedOptions = new HashSet<>();
+    private Set<Long> selectedOptions = new HashSet<>();
 
     public String getName() {
         return name;
@@ -27,11 +27,11 @@ public class TariffModel {
         this.price = price;
     }
 
-    public Set<Integer> getSelectedOptions() {
+    public Set<Long> getSelectedOptions() {
         return selectedOptions;
     }
 
-    public void setSelectedOptions(Set<Integer> selectedOptions) {
+    public void setSelectedOptions(Set<Long> selectedOptions) {
         this.selectedOptions = selectedOptions;
     }
 }

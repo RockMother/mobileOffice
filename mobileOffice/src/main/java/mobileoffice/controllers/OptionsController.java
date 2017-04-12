@@ -1,7 +1,8 @@
 package mobileoffice.controllers;
 
-import mobileoffice.business.contracts.data.OptionsDataService;
 import mobileoffice.business.contracts.OptionsService;
+import mobileoffice.business.contracts.data.OptionsDataService;
+import mobileoffice.dao.entities.Options;
 import mobileoffice.models.OptionModel;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kiril_000 on 11.04.2017.
@@ -47,7 +51,20 @@ public class OptionsController {
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String getEdit(@RequestParam long id, Model model) throws Exception {
+        List<Options> selectedRequiredOptions = optionsService.getSelectedRequiredOptions(id);
+        List<Options> selectedIncompatibleOptions = optionsService.getSelectedIncompatibleOptions(id);
+
+        List<Options> allSelectedOptions = new ArrayList<>();
+        allSelectedOptions.addAll(selectedRequiredOptions);
+        allSelectedOptions.addAll(selectedIncompatibleOptions);
+
+        List<Options> avaliableOptions =  optionsService.getAvailableOptions(id, allSelectedOptions);
+
         model.addAttribute("option", optionsDataService.getById(id));
+        model.addAttribute("selectedRequiredOptions", selectedRequiredOptions);
+        model.addAttribute("availableRequiredOptions",avaliableOptions);
+        model.addAttribute("selectedIncompatibleOptions", selectedIncompatibleOptions);
+        model.addAttribute("avaliableIncompatibleOptions", avaliableOptions);
         model.addAttribute("addNew", false);
         return "options/edit";
     }
@@ -56,7 +73,7 @@ public class OptionsController {
     public String postEdit(Model model, OptionModel optionModel) throws Exception {
         model.addAttribute("option", optionsService.updateOptions(optionModel));
         model.addAttribute("addNew", false);
-        return "options/edit";
+        return "redirect:/options/edit?id=" + optionModel.getId();
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)

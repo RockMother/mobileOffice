@@ -5,8 +5,8 @@
 <html>
 <head>
     <title>Mobile office</title>
-    <link type="text/css" rel="stylesheet" href="/resources/main.css"/>
-    <link type="text/css" rel="stylesheet" href="/resources/cards.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/css/main.css"/>
+    <link type="text/css" rel="stylesheet" href="/resources/css/cards.css"/>
 </head>
 <body>
 <div class="main-content">
@@ -40,8 +40,8 @@
                         <div class="card-row">
                             <div class="label">Contracts:</div>
                             <div class="value list">
-                                <c:if test="${client.contractsById != null && client.contractsById.size() > 0}">
-                                    <c:forEach items="${client.contractsById}" var="contract">
+                                <c:if test="${client.contractsByClientId != null && client.contractsByClientId.size() > 0}">
+                                    <c:forEach items="${client.contractsByClientId}" var="contract">
                                         <div class="sub-value">
                                                 ${contract.number}
                                         </div>

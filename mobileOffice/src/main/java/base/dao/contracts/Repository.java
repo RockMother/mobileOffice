@@ -12,8 +12,11 @@ public interface Repository<T extends HasLongId> {
     T getById(long Id, Session session) throws Exception;
     List<T> findByParameters(String searchQuery, List<Object> parameters) throws Exception;
     List<T> findByParameters(String searchQuery, List<Object> parameters, Session session);
+    List<T> findByParameter(String searchQuery, Object parameter, Session session) throws Exception;
+    List<T> findByParameter(String searchQuery, Object parameter) throws Exception;
     T create(T model) throws Exception;
     T create(T model,Session session);
+    void delete(T entity, Session session);
     void delete(long id) throws Exception;
     void delete(long id, Session session) throws IllegalAccessException, InstantiationException;
     void update(T current);

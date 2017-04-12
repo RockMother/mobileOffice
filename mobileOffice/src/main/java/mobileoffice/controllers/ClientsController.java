@@ -61,6 +61,7 @@ public class ClientsController {
         Client client = clientDataService.getById(id);
         model.addAttribute("user", client);
         model.addAttribute("contracts", clientsService.getContracts(client.getId()));
+        model.addAttribute("tariffs", tariffDataService.getAll());
         return "clients/edit";
     }
 }

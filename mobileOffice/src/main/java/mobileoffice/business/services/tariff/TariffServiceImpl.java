@@ -1,5 +1,6 @@
 package mobileoffice.business.services.tariff;
 
+import mobileoffice.business.contracts.OptionsService;
 import mobileoffice.business.contracts.tariff.TariffService;
 import mobileoffice.dao.contracts.OptionsRepository;
 import mobileoffice.dao.contracts.TariffOptionsRspRepository;
@@ -8,11 +9,12 @@ import mobileoffice.dao.entities.Options;
 import mobileoffice.dao.entities.Tariff;
 import mobileoffice.dao.entities.TariffOptionsRsp;
 import mobileoffice.models.TariffModel;
+import org.hibernate.Session;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Set;
 
 /**
  * Created by kisc on 4/3/2017.
@@ -21,13 +23,16 @@ import java.util.stream.Stream;
 public class TariffServiceImpl implements TariffService {
     private TariffRepository tariffRepository;
     private OptionsRepository optionsRepository;
+    private OptionsService optionsService;
     private TariffOptionsRspRepository tariffOptionsRspRepository;
 
     public TariffServiceImpl(TariffRepository tariffRepository,
                              OptionsRepository optionsRepository,
+                             OptionsService optionsService,
                              TariffOptionsRspRepository tariffOptionsRspRepository){
         this.tariffRepository = tariffRepository;
         this.optionsRepository = optionsRepository;
+        this.optionsService = optionsService;
         this.tariffOptionsRspRepository = tariffOptionsRspRepository;
     }
 
@@ -38,7 +43,7 @@ public class TariffServiceImpl implements TariffService {
         tariff.setPrice(model.getPrice());
         Tariff result = tariffRepository.create(tariff);
         if (model.getSelectedOptions().size() > 0) {
-            for (Integer optionId : model.getSelectedOptions()) {
+            for (Long optionId : model.getSelectedOptions()) {
                 TariffOptionsRsp rsp = new TariffOptionsRsp();
                 rsp.setTariffId(result.getId());
                 rsp.setTariffOptionId(optionId);
@@ -54,7 +59,7 @@ public class TariffServiceImpl implements TariffService {
         List<Object> params = new ArrayList<Object>();
         params.add(id);
         for (TariffOptionsRsp rsp : tariffOptionsRspRepository.findByParameters("tariff_id = ?", params)) {
-            result.add(rsp.getOptionsByOptionsId());
+            result.add(rsp.getOptionsByTariffOptionId());
         }
         return result;
     }
@@ -64,9 +69,10 @@ public class TariffServiceImpl implements TariffService {
         List<Options> result = new ArrayList<>();
         List<Options> avaliableOptions = optionsRepository.getAll();
 
-        Stream<Options> selectedOptionsStream = selectedOptions.stream();
+        optionsService.getAvailableOptions(selectedOptions);
+
         for (Options avaliableOption : avaliableOptions) {
-            if (!selectedOptionsStream.anyMatch(s -> avaliableOption.getId() == s.getId())) {
+            if (!selectedOptions.stream().anyMatch(s -> avaliableOption.getId() == s.getId())) {
                 result.add(avaliableOption);
             }
         }
@@ -80,11 +86,49 @@ public class TariffServiceImpl implements TariffService {
 
     @Override
     public void updateTariff(long id, TariffModel tariffModel) throws Exception {
-        Tariff current = tariffRepository.getById(id);
-        current.setPrice(tariffModel.getPrice());
-        current.setName(tariffModel.getName());
-        //TODO Options
-        tariffRepository.update(current);
+        Session session = null;
+        try {
+            session = tariffRepository.getSession();
+            session.beginTransaction();
+            Tariff current = tariffRepository.getById(id, session);
+            current.setPrice(tariffModel.getPrice());
+            current.setName(tariffModel.getName());
+            syncOptions(id, tariffModel.getSelectedOptions(), session);
+            tariffRepository.update(current, session);
+            session.flush();
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+
+    }
+
+    private void syncOptions(long tariffId, Set<Long> selectedOptions,  Session session) throws Exception {
+        List<TariffOptionsRsp> rsps = tariffOptionsRspRepository.findByParameter("tariff_id = ?", tariffId, session);
+
+        List<TariffOptionsRsp> toDelete = new ArrayList<>();
+        for(TariffOptionsRsp rsp: rsps){
+            if (selectedOptions.stream().noneMatch(s -> s == rsp.getTariffOptionId())){
+                toDelete.add(rsp);
+            }
+        }
+        List<Long> toAdd = new ArrayList<>();
+        for(Long id: selectedOptions){
+            if (rsps.stream().noneMatch(r -> r.getTariffOptionId() == id)){
+                toAdd.add(id);
+            }
+        }
+        for(TariffOptionsRsp rsp: toDelete){
+            tariffOptionsRspRepository.delete(rsp, session);
+        }
+        for(Long id: toAdd){
+            TariffOptionsRsp rsp = new TariffOptionsRsp();
+            rsp.setTariffId(tariffId);
+            rsp.setTariffOptionId(id);
+            tariffOptionsRspRepository.create(rsp, session);
+        }
+
     }
 }
 

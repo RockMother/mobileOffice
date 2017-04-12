@@ -1,5 +1,6 @@
 package mobileoffice.controllers;
 
+import mobileoffice.business.contracts.OptionsService;
 import mobileoffice.business.contracts.data.OptionsDataService;
 import mobileoffice.business.contracts.data.TariffDataService;
 import mobileoffice.business.contracts.data.TariffOptionsRspDataService;
@@ -24,6 +25,7 @@ import java.util.List;
 @Secured("ROLE_MANAGER")
 public class TariffController {
 
+    private OptionsService optionsService;
     private TariffOptionsRspDataService tariffOptionsRspDataService;
     private TariffService tariffService;
     private TariffDataService tariffDataService;
@@ -31,10 +33,12 @@ public class TariffController {
 
     public TariffController(TariffDataService tariffDataService,
                             OptionsDataService optionsDataService,
+                            OptionsService optionsService,
                             TariffOptionsRspDataService tariffOptionsRspDataService,
                             TariffService tariffService){
         this.tariffDataService = tariffDataService;
         this.optionsDataService = optionsDataService;
+        this.optionsService = optionsService;
         this.tariffOptionsRspDataService = tariffOptionsRspDataService;
         this.tariffService = tariffService;
     }
@@ -61,7 +65,7 @@ public class TariffController {
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public String editPost(@RequestParam long id, Model model) throws Exception {
         List<Options> selectedOptions = tariffService.getSelectedOptions(id);
-        model.addAttribute("options", tariffService.getAvaliableOptions(id, selectedOptions));
+        model.addAttribute("options", optionsService.getAvailableOptions(selectedOptions));
         model.addAttribute("selectedOptions", selectedOptions);
         model.addAttribute("tariff", tariffDataService.getById(id));
         model.addAttribute("addNew", false);
@@ -72,7 +76,7 @@ public class TariffController {
     public String editPost(@RequestParam long id, TariffModel tariffModel, Model model) throws Exception {
         tariffService.updateTariff(id, tariffModel);
         List<Options> selectedOptions = tariffService.getSelectedOptions(id);
-        model.addAttribute("options", tariffService.getAvaliableOptions(id, selectedOptions));
+        model.addAttribute("options", optionsService.getAvailableOptions(selectedOptions));
         model.addAttribute("selectedOptions", selectedOptions);
         model.addAttribute("tariff", tariffDataService.getById(id));
         model.addAttribute("addNew", false);

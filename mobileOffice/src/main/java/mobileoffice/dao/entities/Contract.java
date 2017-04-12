@@ -16,7 +16,7 @@ public class Contract implements HasLongId, Serializable {
     private long clientId;
     private Boolean isBlocked;
     private Boolean isAdminBlocker;
-    private Collection<ContractOptionRsp> contractOptionRspsById;
+    private Collection<ContractOptionRsp> contractOptionRspsByContractId;
 
     public long getId(){
         return this.id;
@@ -60,11 +60,11 @@ public class Contract implements HasLongId, Serializable {
     public void setIsAdminBlocker (Boolean isAdminBlocker) {
         this.isAdminBlocker = isAdminBlocker;
     }
-    public Collection<ContractOptionRsp> getContractOptionRspsById(){
-        return this.contractOptionRspsById;
+    public Collection<ContractOptionRsp> getContractOptionRspsByContractId(){
+        return this.contractOptionRspsByContractId;
     }
 
-    public void setContractOptionRspsById (Collection<ContractOptionRsp> contractOptionRspsById) {
-        this.contractOptionRspsById = contractOptionRspsById;
+    public void setContractOptionRspsByContractId (Collection<ContractOptionRsp> contractOptionRspsByContractId) {
+        this.contractOptionRspsByContractId = contractOptionRspsByContractId;
     }
 }
