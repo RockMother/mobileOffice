@@ -67,7 +67,7 @@ CREATE TABLE `options` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `contract_option_rsp` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `contract_id` bigint(20) DEFAULT NULL,
   `option_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
