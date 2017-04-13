@@ -1,5 +1,6 @@
 package mobileoffice.controllers;
 
+import base.controllers.BaseController;
 import mobileoffice.business.contracts.RegistrationService;
 import mobileoffice.models.RegistrationModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by kiril_000 on 02.04.2017.
  */
 @Controller
-public class RegistrationController {
+public class RegistrationController extends BaseController {
 
     @Autowired
     private RegistrationService registrationService;

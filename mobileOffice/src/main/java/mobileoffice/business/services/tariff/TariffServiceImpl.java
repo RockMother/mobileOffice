@@ -56,9 +56,7 @@ public class TariffServiceImpl implements TariffService {
     @Override
     public List<Options> getSelectedOptions(long id) throws Exception {
         List<Options> result = new ArrayList<Options>();
-        List<Object> params = new ArrayList<Object>();
-        params.add(id);
-        for (TariffOptionsRsp rsp : tariffOptionsRspRepository.findByParameters("tariff_id = ?", params)) {
+        for (TariffOptionsRsp rsp : tariffOptionsRspRepository.findByParameter("tariff_id = ?", id)) {
             result.add(rsp.getOptionsByTariffOptionId());
         }
         return result;
@@ -68,8 +66,6 @@ public class TariffServiceImpl implements TariffService {
     public List<Options> getAvaliableOptions(long id, List<Options> selectedOptions) throws Exception {
         List<Options> result = new ArrayList<>();
         List<Options> avaliableOptions = optionsRepository.getAll();
-
-        optionsService.getAvailableOptions(selectedOptions);
 
         for (Options avaliableOption : avaliableOptions) {
             if (!selectedOptions.stream().anyMatch(s -> avaliableOption.getId() == s.getId())) {

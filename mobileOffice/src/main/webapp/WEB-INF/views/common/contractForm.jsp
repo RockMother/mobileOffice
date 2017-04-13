@@ -4,10 +4,10 @@
 <sec:authorize var="loggedAsManager" access="hasRole('ROLE_MANAGER')"></sec:authorize>
 <sec:authorize var="loggedAsClient" access="hasRole('ROLE_CLIENT')"></sec:authorize>
 <div class="form-wrapper contract-edit">
-  <form action="/contract/edit" method="post">
+  <form action="/contract/edit/" method="post">
     <input type="hidden" value="${user.id}" name="clientId">
+    <input type="hidden" value="${contract.id}" name="id"/>
     <c:if test="${loggedAsManager}">
-      <input type="hidden" value="${contract.id}" name="id">
       <div class="input-container">
         <div class="label">Blocked:</div>
         <div class="input-wrapper"><input type="checkbox" name="blocked" value="true" <c:if test="${contract.isBlocked()}">checked</c:if>/></div>

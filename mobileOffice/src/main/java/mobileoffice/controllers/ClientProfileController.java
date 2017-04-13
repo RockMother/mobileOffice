@@ -1,6 +1,6 @@
 package mobileoffice.controllers;
 
-import mobileoffice.business.contracts.ClientsService;
+import base.controllers.BaseController;
 import mobileoffice.business.contracts.ContractService;
 import mobileoffice.models.security.UserDetailsImpl;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,7 +16,7 @@ import java.security.Principal;
  */
 @Controller
 @RequestMapping("/profile")
-public class ClientProfileController {
+public class ClientProfileController extends BaseController {
     private ContractService contractService;
 
     public ClientProfileController(ContractService contractService){

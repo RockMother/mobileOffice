@@ -1,13 +1,12 @@
 package mobileoffice.controllers;
 
+import base.controllers.BaseController;
 import mobileoffice.business.contracts.ContractService;
 import mobileoffice.business.contracts.data.ContractOptionRspDataService;
 import mobileoffice.business.contracts.data.OptionsDataService;
 import mobileoffice.business.contracts.data.TariffDataService;
 import mobileoffice.business.contracts.data.VContractWithTariffDataService;
-import mobileoffice.dao.entities.Options;
 import mobileoffice.dao.entities.VContractWithTariff;
-import mobileoffice.models.ContractModel;
 import mobileoffice.models.EditContractModel;
 import mobileoffice.models.security.UserDetailsImpl;
 import org.springframework.security.access.AccessDeniedException;
@@ -19,14 +18,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
-import java.util.List;
 
 /**
  * Created by kisc on 4/10/2017.
  */
 @Controller
 @RequestMapping("/contract")
-public class ContractController {
+public class ContractController extends BaseController {
     private ContractService contractService;
     private VContractWithTariffDataService contractWithTariffDataService;
     private TariffDataService tariffDataService;

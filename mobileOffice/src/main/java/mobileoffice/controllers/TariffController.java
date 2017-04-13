@@ -1,5 +1,6 @@
 package mobileoffice.controllers;
 
+import base.controllers.BaseController;
 import mobileoffice.business.contracts.OptionsService;
 import mobileoffice.business.contracts.data.OptionsDataService;
 import mobileoffice.business.contracts.data.TariffDataService;
@@ -23,7 +24,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/tariffs")
 @Secured("ROLE_MANAGER")
-public class TariffController {
+public class TariffController extends BaseController {
 
     private OptionsService optionsService;
     private TariffOptionsRspDataService tariffOptionsRspDataService;

@@ -8,6 +8,7 @@
 <div class="main-menu">
     <c:if test="${loggedAsAdmin}">
         <div class="menu-item"><a href="/registration">Add new manager</a></div>
+        <div class="menu-item" style="display: none"><a href="/error">Check exception</a></div>
     </c:if>
     <c:if test="${loggedAsClient}">
         <div class="menu-item"><a href="/profile">Profile</a></div>

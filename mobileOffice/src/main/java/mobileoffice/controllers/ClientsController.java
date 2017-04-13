@@ -1,5 +1,6 @@
 package mobileoffice.controllers;
 
+import base.controllers.BaseController;
 import mobileoffice.business.contracts.ClientsService;
 import mobileoffice.business.contracts.ContractService;
 import mobileoffice.business.contracts.data.ClientDataService;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/clients")
 @Secured("ROLE_MANAGER")
-public class ClientsController {
+public class ClientsController extends BaseController {
 
     private ClientDataService clientDataService;
     private ContractService contractService;

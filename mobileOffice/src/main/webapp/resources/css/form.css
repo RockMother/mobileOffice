@@ -50,6 +50,10 @@
     flex: 0 0 50px;
 }
 
+.form.login-form.error{
+    height: 120px;
+}
+
 .form.login-form{
     height: 100px;
     width: 400px;
@@ -66,6 +70,12 @@
 .form-wrapper.center-content{
     justify-content: center;
     align-items: center;
+}
+
+#error{
+    font-size: 0.8em;
+    color: red;
+    padding-left: 10px;
 }
 
 

@@ -1,5 +1,6 @@
 package mobileoffice.controllers;
 
+import base.controllers.BaseController;
 import mobileoffice.business.contracts.OptionsService;
 import mobileoffice.business.contracts.data.OptionsDataService;
 import mobileoffice.dao.entities.Options;
@@ -20,7 +21,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/options")
 @Secured("ROLE_MANAGER")
-public class OptionsController {
+public class OptionsController extends BaseController {
 
     private OptionsDataService optionsDataService;
     private OptionsService optionsService;

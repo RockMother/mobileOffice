@@ -1,5 +1,6 @@
 package mobileoffice.controllers;
 
+import base.controllers.BaseController;
 import mobileoffice.models.security.UserDetailsImpl;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping("/index")
-public class IndexController {
+public class IndexController extends BaseController {
 
     @RequestMapping(method = {RequestMethod.GET})
     public String get(){

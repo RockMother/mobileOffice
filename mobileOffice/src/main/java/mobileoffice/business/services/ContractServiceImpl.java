@@ -76,7 +76,6 @@ public class ContractServiceImpl implements mobileoffice.business.contracts.Cont
         Contract baseContract = contractRepository.getById(editContractModel.getId(), session);
         if (baseContract.getTariffId() != editContractModel.getTariffId()){
             baseContract.setTariffId(editContractModel.getTariffId());
-            createDefaultOptionList(editContractModel.getId(), editContractModel.getTariffId(), session);
         } else {
             updateSelectedOptions(editContractModel.getId(), editContractModel.getSelectedOptions(), session);
         }
@@ -131,9 +130,9 @@ public class ContractServiceImpl implements mobileoffice.business.contracts.Cont
         return contract.getContractOptionRspsByContractId().stream().map(ContractOptionRsp::getOptionsByOptionId).collect(Collectors.toList());
     }
 
-    private List<Options> getAvailableOptions(long contractId, List<Options> selectedOptions) throws Exception {
+    private List<Options> getAvailableOptions(long tariffId, List<Options> selectedOptions) throws Exception {
         List<Options> result = new ArrayList<>();
-        List<Options> availableOptions = optionsRepository.getAll();
+        List<Options> availableOptions = tariffService.getSelectedOptions(tariffId);
         if (selectedOptions != null && selectedOptions.size() > 0) {
             for (Options availableOption : availableOptions) {
                 if (!selectedOptions.stream().anyMatch(s -> availableOption.getId() == s.getId())) {
@@ -161,7 +160,7 @@ public class ContractServiceImpl implements mobileoffice.business.contracts.Cont
             model.setAdminBlocker(contract.getIsAdminBlocker());
             model.setBlocked(contract.getIsBlocked());
             List<Options> selectedOptions = getContractOptions(contract.getId());
-            List<Options> availableOptions = getAvailableOptions(contract.getId(), selectedOptions);
+            List<Options> availableOptions = getAvailableOptions(contract.getTariffId(), selectedOptions);
             model.setTariffId(contract.getTariffId());
             model.setTariffName(contract.getName());
             model.setAvailableOptions(availableOptions);

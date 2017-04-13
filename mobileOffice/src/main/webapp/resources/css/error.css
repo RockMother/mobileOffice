@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+.main-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.wrapper {
+    text-align: center;
+}
+.error-image{
+    background: url("/resources/img/error-catch.png");
+    width: 615px;
+    height: 461px;
+}
+.error-text{
+    font-size: 4em;
+}
