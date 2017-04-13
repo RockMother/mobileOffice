@@ -68,4 +68,10 @@ public class ClientsController {
         model.addAttribute("tariffs", tariffDataService.getAll());
         return "clients/edit";
     }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String searchByNumber(@RequestParam String number, Model model){
+        model.addAttribute("clients", clientsService.searchByNumber(number));
+        return "clients/list";
+    }
 }

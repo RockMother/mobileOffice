@@ -55,6 +55,18 @@ public class ClientsServiceImpl implements mobileoffice.business.contracts.Clien
         return client.getId();
     }
 
+    @Override
+    public List<Client> searchByNumber(String number) throws Exception {
+        List<Client> result = new ArrayList<>();
+        List<Contract> contracts = contractRepository.findByParameter("number = ?", number);
+        for (Contract contract : contracts) {
+            if (result.stream().noneMatch(r -> r.getId() == contract.getClientId())){
+                result.add(clientRepository.getById(contract.getClientId()));
+            }
+        }
+        return result;
+    }
+
     private Contract buildContract(long clientId, NewClientModel model){
         Contract contract = new Contract();
         contract.setTariffId(model.getTariffId());
