@@ -7,7 +7,7 @@
     <link type="text/css" rel="stylesheet" href="/resources/css/form.css"/>
 </head>
 <body>
-<div class="form-wrapper login-form">
+<div class="form-wrapper center-content">
     <form class="form login-form" name='loginForm' action="j_spring_security_check" method='POST'>
         <div class="form-inner-wrapper">
             <div class="input-container">

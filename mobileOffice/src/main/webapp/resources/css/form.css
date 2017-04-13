@@ -60,7 +60,10 @@
 .registration-form.new-client{
     height: 400px;
 }
-.form-wrapper.login-form{
+.form-wrapper.search-client-form{
+    height: auto;
+}
+.form-wrapper.center-content{
     justify-content: center;
     align-items: center;
 }

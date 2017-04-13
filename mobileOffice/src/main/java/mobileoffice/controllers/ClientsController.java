@@ -69,9 +69,15 @@ public class ClientsController {
         return "clients/edit";
     }
 
+
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String searchByNumber(@RequestParam String number, Model model){
+    public String searchByNumberPost(Model model) throws Exception {
+        return "clients/search";
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public String searchByNumberPost(@RequestParam String number, Model model) throws Exception {
         model.addAttribute("clients", clientsService.searchByNumber(number));
-        return "clients/list";
+        return "clients/search";
     }
 }

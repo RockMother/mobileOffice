@@ -23,11 +23,11 @@
       </c:if>
       <div class="input-container">
         <div class="label">Name:</div>
-        <div class="input-wrapper"><input type='text' name='name' value="${tariff.name}"/></div>
+        <div class="input-wrapper"><input type='text' required name='name' value="${tariff.name}"/></div>
       </div>
       <div class="input-container">
         <div class="label">Price:</div>
-        <div class="input-wrapper"><input type='number' name='price' value="${tariff.price}"/></div>
+        <div class="input-wrapper"><input type='number' required  name='price' value="${tariff.price}"/></div>
       </div>
       <div class="input-container">
         <div class="label">Options:</div>

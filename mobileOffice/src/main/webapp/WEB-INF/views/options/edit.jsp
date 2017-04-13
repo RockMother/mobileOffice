@@ -25,11 +25,11 @@
             </c:if>
             <div class="input-container">
                 <div class="label">Name:</div>
-                <div class="input-wrapper"><input type='text' name='name' value="${option.name}"/></div>
+                <div class="input-wrapper"><input type='text' required name='name' value="${option.name}"/></div>
             </div>
             <div class="input-container">
                 <div class="label">Initial price:</div>
-                <div class="input-wrapper"><input type='number' name='initialPrice' value="${option.initialPrice}"/>
+                <div class="input-wrapper"><input type='number' required name='initialPrice' value="${option.initialPrice}"/>
                 </div>
             </div>
             <c:if test="${!addNew}">

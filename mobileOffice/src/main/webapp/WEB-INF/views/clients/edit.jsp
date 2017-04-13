@@ -9,6 +9,7 @@
     <link type="text/css" rel="stylesheet" href="/resources/css/form.css"/>
     <link type="text/css" rel="stylesheet" href="/resources/css/contracts.css"/>
     <script src="/resources/js/multiple-select-list.js"></script>
+    <script src="/resources/js/repeat-password-validation.js"></script>
 </head>
 <body>
 <div class="main-content">
@@ -18,7 +19,7 @@
     </c:if>
     <div class="form-wrapper new-client-form">
         <c:if test="${empty user}">
-            <form action="/clients/add" method="post">
+            <form action="/clients/add" method="post" onsubmit="mobileOffice.validatePassword()">
             <c:import url="../common/userFields.jsp"/>
             <c:import url="../manager/clientFields.jsp"/>
             </form>

@@ -11,7 +11,7 @@
     <link type="text/css" rel="stylesheet" href="/resources/css/form.css"/>
 </head>
 <body>
-<div class="form-wrapper">
+<div class="form-wrapper center-content">
     <form class="form registration-form <c:if test="${loggedAsManager}">new-client</c:if>" action="/register" method='POST'>
         <div class="form-inner-wrapper">
             <c:import url="common/userFields.jsp"/>
