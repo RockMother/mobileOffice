@@ -17,6 +17,11 @@ html, body {
     width: 615px;
     height: 461px;
 }
+.forbidden-image{
+    background: url("/resources/img/forbidden.jpg") 50% center no-repeat;
+    width: 615px;
+    height: 800px;
+}
 .error-text{
     font-size: 4em;
 }
