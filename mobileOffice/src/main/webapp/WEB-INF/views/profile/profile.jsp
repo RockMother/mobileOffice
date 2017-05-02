@@ -5,8 +5,8 @@
 <html>
 <head>
   <title>Mobile office</title>
-  <link type="text/css" rel="stylesheet" href="/resources/css/main.css"/>
-  <link type="text/css" rel="stylesheet" href="/resources/css/cards.css"/>
+  <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/main.css" />"/>
+  <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/cards.css" />"/>
 </head>
 <body>
 <div class="main-content">
@@ -18,7 +18,7 @@
     <div class="contracts cards">
       <c:forEach items="${contracts}" var="contract">
         <div class="card">
-          <div class="card-caption"><a href="/contract/edit?id=${contract.id}">${contract.number}</a></div>
+          <div class="card-caption"><a href="<c:url value="/contract/edit?id=${contract.id}" />">${contract.number}</a></div>
           <div class="card-body">
             <div class="card-row">
               <div class="label">Tariff:</div>
@@ -30,10 +30,10 @@
               <div>Blocked by manager</div>
             </c:if>
             <c:if test="${contract.isBlocked() && !contract.isAdminBlocker()}">
-              <a href="/contract/unblock?id=${contract.id}">Unblock</a>
+              <a href="<c:url value="/contract/unblock?id=${contract.id}" />">Unblock</a>
             </c:if>
             <c:if test="${!contract.isBlocked()}">
-              <a href="/contract/block?id=${contract.id}">Block</a>
+              <a href="<c:url value="/contract/block?id=${contract.id}" />">Block</a>
             </c:if>
           </div>
         </div>

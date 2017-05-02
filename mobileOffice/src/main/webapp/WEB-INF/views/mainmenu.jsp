@@ -7,16 +7,16 @@
 <sec:authorize var="loggedAsClient" access="hasRole('ROLE_CLIENT')"></sec:authorize>
 <div class="main-menu">
     <c:if test="${loggedAsAdmin}">
-        <div class="menu-item"><a href="/registration">Add new manager</a></div>
-        <div class="menu-item" style="display: none"><a href="/error">Check exception</a></div>
+        <div class="menu-item"><a href="<c:url value="/registration" />">Add new manager</a></div>
+        <div class="menu-item" style="display: none"><a href="<c:url value="/error" />">Check exception</a></div>
     </c:if>
     <c:if test="${loggedAsClient}">
-        <div class="menu-item"><a href="/profile">Profile</a></div>
+        <div class="menu-item"><a href="<c:url value="/profile" />">Profile</a></div>
     </c:if>
     <c:if test="${loggedAsManager}">
-        <div class="menu-item"><a href="/clients">Clients</a></div>
-        <div class="menu-item"><a href="/tariffs">Tariffs</a></div>
-        <div class="menu-item"><a href="/options">Options</a></div>
-        <div class="menu-item"><a href="/clients/search">Search by number</a></div>
+        <div class="menu-item"><a href="<c:url value="/clients" />">Clients</a></div>
+        <div class="menu-item"><a href="<c:url value="/tariffs" />">Tariffs</a></div>
+        <div class="menu-item"><a href="<c:url value="/options" />">Options</a></div>
+        <div class="menu-item"><a href="<c:url value="/clients/search" />">Search by number</a></div>
     </c:if>
 </div>

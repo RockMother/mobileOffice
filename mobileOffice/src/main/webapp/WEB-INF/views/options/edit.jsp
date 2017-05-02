@@ -5,8 +5,8 @@
 <html>
 <head>
     <title>Mobile office</title>
-    <link type="text/css" rel="stylesheet" href="/resources/css/main.css"/>
-    <link type="text/css" rel="stylesheet" href="/resources/css/form.css"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/main.css" />"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/form.css" />"/>
     <script src="/resources/js/multiple-select-list.js"></script>
 </head>
 <body>
@@ -16,9 +16,9 @@
         <c:import url="../mainmenu.jsp"></c:import>
     </c:if>
     <div class="form-wrapper options-form">
-        <form action=<c:if test="${addNew}">"/options/add"
+        <form action=<c:if test="${addNew}">"<c:url value="/options/add"/>"
         </c:if>
-        <c:if test="${!addNew}">"/options/edit"</c:if> method="post">
+        <c:if test="${!addNew}"><c:url value="/options/edit"/>"</c:if> method="post">
         <div class="form-inner-wrapper">
             <c:if test="${!addNew}">
                 <input type="hidden" name="id" value="${option.id}"/>

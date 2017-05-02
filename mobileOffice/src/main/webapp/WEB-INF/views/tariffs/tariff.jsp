@@ -5,8 +5,8 @@
 <html>
 <head>
   <title>Mobile office</title>
-  <link type="text/css" rel="stylesheet" href="/resources/css/main.css"/>
-  <link type="text/css" rel="stylesheet" href="/resources/css/cards.css"/>
+  <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/main.css" />"/>
+  <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/cards.css" />"/>
 </head>
 <body>
 <div class="main-content">
@@ -18,18 +18,18 @@
     <div class="tariffs cards">
     <c:forEach items="${tariffs}" var="tariff">
       <div class="card">
-        <div class="card-caption"><a href="/tariffs/edit?id=${tariff.id}">${tariff.name}</a></div>
+        <div class="card-caption"><a href="<c:url value="/tariffs/edit?id=${tariff.id}" />">${tariff.name}</a></div>
         <div class="card-body">
           <div class="card-row">
             <div class="label">Price:</div>
             <div class="value">${tariff.price}</div>
           </div>
         </div>
-        <div class="footer-card"><a href="/tariffs/delete?id=${tariff.id}">Remove</a></div>
+        <div class="footer-card"><a href="<c:url value="/tariffs/delete?id=${tariff.id}" />">Remove</a></div>
       </div>
     </c:forEach>
       <div class="card">
-        <div class="card-caption"><a href="/tariffs/add">Add new tariff</a></div>
+        <div class="card-caption"><a href="<c:url value="/tariffs/add" />">Add new tariff</a></div>
         <div class="card-body">
           <div class="card-row">
           </div>

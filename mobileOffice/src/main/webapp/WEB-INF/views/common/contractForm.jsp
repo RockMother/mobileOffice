@@ -4,7 +4,7 @@
 <sec:authorize var="loggedAsManager" access="hasRole('ROLE_MANAGER')"></sec:authorize>
 <sec:authorize var="loggedAsClient" access="hasRole('ROLE_CLIENT')"></sec:authorize>
 <div class="form-wrapper contract-edit">
-  <form action="/contract/edit/" method="post">
+  <form action="<c:url value="/contract/edit/"/>" method="post">
     <input type="hidden" value="${user.id}" name="clientId">
     <input type="hidden" value="${contract.id}" name="id"/>
     <c:if test="${loggedAsManager}">

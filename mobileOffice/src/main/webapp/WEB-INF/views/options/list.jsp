@@ -5,8 +5,8 @@
 <html>
 <head>
     <title>Mobile office</title>
-    <link type="text/css" rel="stylesheet" href="/resources/css/main.css"/>
-    <link type="text/css" rel="stylesheet" href="/resources/css/cards.css"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/main.css" />"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/cards.css" />"/>
 </head>
 <body>
 <div class="main-content">
@@ -18,18 +18,18 @@
         <div class="tariffs cards">
             <c:forEach items="${options}" var="option">
                 <div class="card">
-                    <div class="card-caption"><a href="/options/edit?id=${option.id}">${option.name}</a></div>
+                    <div class="card-caption"><a href="<c:url value="/options/edit?id=${option.id}" />">${option.name}</a></div>
                     <div class="card-body">
                         <div class="card-row">
                             <div class="label">Price:</div>
                             <div class="value">${option.initialPrice}</div>
                         </div>
                     </div>
-                    <div class="footer-card"><a href="/options/delete?id=${option.id}">Remove</a></div>
+                    <div class="footer-card"><a href="<c:url value="/options/delete?id=${option.id}" />">Remove</a></div>
                 </div>
             </c:forEach>
             <div class="card">
-                <div class="card-caption"><a href="/options/add">Add new option</a></div>
+                <div class="card-caption"><a href="<c:url value="/options/add" />">Add new option</a></div>
                 <div class="card-body">
                     <div class="card-row">
                     </div>

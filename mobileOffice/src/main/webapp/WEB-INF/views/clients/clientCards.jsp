@@ -5,7 +5,7 @@
     <c:forEach items="${clients}" var="client">
         <div class="card">
             <div class="card-caption"><a
-                    href="/clients/edit?id=${client.id}">${client.lastName} ${client.name}</a></div>
+                    href="<c:url value="/clients/edit?id="/>${client.id}">${client.lastName} ${client.name}</a></div>
             <div class="card-body">
                 <div class="card-row">
                     <div class="label">Address:</div>
@@ -40,7 +40,7 @@
     </c:forEach>
     <c:if test="${empty hideCreateNew}">
         <div class="card">
-            <div class="card-caption"><a href="/clients/add">Create new</a></div>
+            <div class="card-caption"><a href="<c:url value="/clients/add" />">Create new</a></div>
             <div class="card-body"/>
         </div>
     </c:if>

@@ -10,11 +10,11 @@
     <div class="right-toolbar">
         <c:choose>
             <c:when test="${logged}">
-                <a href="/logout">Logout</a>
+                <a href="<c:url value="/logout" />">Logout</a>
             </c:when>
             <c:otherwise>
                 <div class="login-wrapper">
-                    <a href="login">Login</a>
+                    <a href="<c:url value="/login" />">Login</a>
                 </div>
             </c:otherwise>
         </c:choose>

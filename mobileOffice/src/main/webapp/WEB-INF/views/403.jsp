@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <link type="text/css" rel="stylesheet" href="/resources/css/error.css"/>
+  <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/error.css" />"/>
   <title>Error</title>
 </head>
 <body>

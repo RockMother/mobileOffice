@@ -5,8 +5,8 @@
 <html>
 <head>
   <title>Mobile office</title>
-  <link type="text/css" rel="stylesheet" href="/resources/css/main.css"/>
-  <link type="text/css" rel="stylesheet" href="/resources/css/form.css"/>
+  <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/main.css" />"/>
+  <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/form.css" />"/>
   <script src="/resources/js/multiple-select-list.js"></script>
 </head>
 <body>

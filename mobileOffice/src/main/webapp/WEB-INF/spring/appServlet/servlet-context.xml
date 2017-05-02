@@ -15,6 +15,5 @@
 
     <mvc:annotation-driven />
     <mvc:resources mapping="/resources/**" location="/resources/"/>
-
     <security:global-method-security secured-annotations="enabled"/>
 </beans>

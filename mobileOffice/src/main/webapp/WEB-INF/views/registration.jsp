@@ -7,13 +7,13 @@
 <html>
 <head>
     <title>Title</title>
-    <link type="text/css" rel="stylesheet" href="/resources/css/main.css"/>
-    <link type="text/css" rel="stylesheet" href="/resources/css/form.css"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/main.css" />"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/form.css" />"/>
     <script src="/resources/js/repeat-password-validation.js"></script>
 </head>
 <body>
 <div class="form-wrapper center-content">
-    <form class="form registration-form <c:if test="${loggedAsManager}">new-client</c:if>" action="/register" method='POST' onsubmit="mobileOffice.validatePassword()">
+    <form class="form registration-form <c:if test="${loggedAsManager}">new-client</c:if>" action="<c:url value="/register"/>" method='POST' onsubmit="mobileOffice.validatePassword()">
         <div class="form-inner-wrapper">
             <c:import url="common/userFields.jsp"/>
             <c:if test="${loggedAsAdmin}">

@@ -6,9 +6,9 @@
 <html>
 <head>
     <title>Mobile office</title>
-    <link type="text/css" rel="stylesheet" href="/resources/css/main.css"/>
-    <link type="text/css" rel="stylesheet" href="/resources/css/form.css"/>
-    <link type="text/css" rel="stylesheet" href="/resources/css/cards.css"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/main.css" />"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/form.css" />"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/cards.css" />"/>
 </head>
 <body>
 <div class="main-content">
@@ -18,7 +18,7 @@
     </c:if>
     <div class="working-area">
         <div class="form-wrapper search-client-form">
-            <form action="/clients/search" method="post">
+            <form action="<c:url value="/clients/search" method="post" />">
                 <div class="input-container">
                     <div class="label">Number:</div>
                     <div class="input-wrapper"><input type='text' name='number'></div>
