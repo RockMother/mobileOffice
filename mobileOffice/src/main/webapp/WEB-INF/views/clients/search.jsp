@@ -18,7 +18,7 @@
     </c:if>
     <div class="working-area">
         <div class="form-wrapper search-client-form">
-            <form action="<c:url value="/clients/search" method="post" />">
+            <form action="<c:url value="/clients/search" />" method="post">
                 <div class="input-container">
                     <div class="label">Number:</div>
                     <div class="input-wrapper"><input type='text' name='number'></div>

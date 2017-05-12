@@ -7,7 +7,7 @@
   <title>Mobile office</title>
   <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/main.css" />"/>
   <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/form.css" />"/>
-  <script src="/resources/js/multiple-select-list.js"></script>
+  <script src="<c:url value="/resources/js/multiple-select-list.js" />"></script>
 </head>
 <body>
 <div class="main-content">
@@ -16,7 +16,7 @@
     <c:import url="../mainmenu.jsp"></c:import>
   </c:if>
   <div class="form-wrapper tariffs-form">
-    <form action=<c:if test="${addNew}">"/tariffs/add"</c:if><c:if test="${!addNew}">"/tariffs/edit"</c:if> method="post">
+    <form action=<c:if test="${addNew}">"<c:url value="/tariffs/add"/>"</c:if><c:if test="${!addNew}">"<c:url value="/tariffs/edit"/>"</c:if> method="post">
     <div class="form-inner-wrapper">
       <c:if test="${!addNew}">
         <input type="hidden" name="id" value="${tariff.id}"/>

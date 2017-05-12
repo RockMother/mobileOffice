@@ -7,7 +7,7 @@
     <title>Mobile office</title>
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/main.css" />"/>
     <link type="text/css" rel="stylesheet" href="<c:url value="/resources/css/form.css" />"/>
-    <script src="/resources/js/multiple-select-list.js"></script>
+    <script src="<c:url value="/resources/js/multiple-select-list.js" />"></script>
 </head>
 <body>
 <div class="main-content">

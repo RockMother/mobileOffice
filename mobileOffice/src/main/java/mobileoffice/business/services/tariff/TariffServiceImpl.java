@@ -1,6 +1,7 @@
 package mobileoffice.business.services.tariff;
 
 import mobileoffice.business.contracts.OptionsService;
+import mobileoffice.business.contracts.tariff.TariffChangedNotifierService;
 import mobileoffice.business.contracts.tariff.TariffService;
 import mobileoffice.dao.contracts.OptionsRepository;
 import mobileoffice.dao.contracts.TariffOptionsRspRepository;
@@ -24,15 +25,18 @@ public class TariffServiceImpl implements TariffService {
     private TariffRepository tariffRepository;
     private OptionsRepository optionsRepository;
     private OptionsService optionsService;
+    private TariffChangedNotifierService tariffChangedNotifierService;
     private TariffOptionsRspRepository tariffOptionsRspRepository;
 
     public TariffServiceImpl(TariffRepository tariffRepository,
                              OptionsRepository optionsRepository,
                              OptionsService optionsService,
+                             TariffChangedNotifierService tariffChangedNotifierService,
                              TariffOptionsRspRepository tariffOptionsRspRepository){
         this.tariffRepository = tariffRepository;
         this.optionsRepository = optionsRepository;
         this.optionsService = optionsService;
+        this.tariffChangedNotifierService = tariffChangedNotifierService;
         this.tariffOptionsRspRepository = tariffOptionsRspRepository;
     }
 
@@ -50,6 +54,7 @@ public class TariffServiceImpl implements TariffService {
                 tariffOptionsRspRepository.create(rsp);
             }
         }
+        raiseChanged();
         return result;
     }
 
@@ -78,6 +83,7 @@ public class TariffServiceImpl implements TariffService {
     @Override
     public void delete(long id) throws Exception {
         tariffRepository.delete(id);
+        raiseChanged();
     }
 
     @Override
@@ -92,12 +98,17 @@ public class TariffServiceImpl implements TariffService {
             syncOptions(id, tariffModel.getSelectedOptions(), session);
             tariffRepository.update(current, session);
             session.flush();
+            raiseChanged();
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();
             }
         }
 
+    }
+
+    private void raiseChanged(){
+        tariffChangedNotifierService.tariffChanged();
     }
 
     private void syncOptions(long tariffId, Set<Long> selectedOptions,  Session session) throws Exception {
