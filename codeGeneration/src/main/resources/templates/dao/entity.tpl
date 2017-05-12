@@ -2,6 +2,7 @@ package ${settings.entityPackageName};
 
 import base.dao.contracts.HasLongId;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Collection;
 
@@ -33,6 +34,7 @@ public class ${model.className} implements HasLongId, Serializable {
     </#list>
     <#list model.foreignKeys as key>
         <#if key.isOneToMany()>
+    @JsonIgnore
     public Collection<${key.table.className}> get${key.keyColumnNameForProperties}(){
         return this.${key.keyColumnName};
     }
@@ -42,6 +44,7 @@ public class ${model.className} implements HasLongId, Serializable {
     }
         </#if>
         <#if !key.isOneToMany()>
+    @JsonIgnore
     public ${key.table.className} get${key.keyColumnNameForProperties}(){
         return this.${key.keyColumnName};
     }

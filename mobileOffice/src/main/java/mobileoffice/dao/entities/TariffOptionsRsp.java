@@ -2,6 +2,7 @@ package mobileoffice.dao.entities;
 
 import base.dao.contracts.HasLongId;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Collection;
 
@@ -37,6 +38,7 @@ public class TariffOptionsRsp implements HasLongId, Serializable {
     public void setTariffOptionId (long tariffOptionId) {
         this.tariffOptionId = tariffOptionId;
     }
+    @JsonIgnore
     public Tariff getTariffByTariffId(){
         return this.tariffByTariffId;
     }
@@ -44,6 +46,7 @@ public class TariffOptionsRsp implements HasLongId, Serializable {
     public void setTariffByTariffId (Tariff tariffByTariffId) {
         this.tariffByTariffId = tariffByTariffId;
     }
+    @JsonIgnore
     public Options getOptionsByTariffOptionId(){
         return this.optionsByTariffOptionId;
     }

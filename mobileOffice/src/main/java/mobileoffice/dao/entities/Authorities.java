@@ -2,6 +2,7 @@ package mobileoffice.dao.entities;
 
 import base.dao.contracts.HasLongId;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Collection;
 

@@ -2,6 +2,7 @@ package mobileoffice.dao.entities;
 
 import base.dao.contracts.HasLongId;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Collection;
 
@@ -60,6 +61,7 @@ public class Contract implements HasLongId, Serializable {
     public void setIsAdminBlocker (Boolean isAdminBlocker) {
         this.isAdminBlocker = isAdminBlocker;
     }
+    @JsonIgnore
     public Collection<ContractOptionRsp> getContractOptionRspsByContractId(){
         return this.contractOptionRspsByContractId;
     }

@@ -54,6 +54,7 @@
       <version>${spring.version}</version>
     </dependency>
 
+
     <!-- Spring Security -->
     <dependency>
       <groupId>org.springframework.security</groupId>
@@ -106,6 +107,19 @@
       <artifactId>activemq-spring</artifactId>
       <version>${activemq.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.9.0.pr3</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.9.0.pr3</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>mobileoffice</finalName>

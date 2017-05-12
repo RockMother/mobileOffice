@@ -2,6 +2,7 @@ package mobileoffice.dao.entities;
 
 import base.dao.contracts.HasLongId;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Collection;
 
@@ -53,6 +54,7 @@ public class OptionRelationsRsp implements HasLongId, Serializable {
     public void setOptionSecondId (long optionSecondId) {
         this.optionSecondId = optionSecondId;
     }
+    @JsonIgnore
     public Options getOptionsByOptionMainId(){
         return this.optionsByOptionMainId;
     }
@@ -60,6 +62,7 @@ public class OptionRelationsRsp implements HasLongId, Serializable {
     public void setOptionsByOptionMainId (Options optionsByOptionMainId) {
         this.optionsByOptionMainId = optionsByOptionMainId;
     }
+    @JsonIgnore
     public Options getOptionsByOptionSecondId(){
         return this.optionsByOptionSecondId;
     }

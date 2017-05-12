@@ -2,6 +2,7 @@ package mobileoffice.dao.entities;
 
 import base.dao.contracts.HasLongId;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Collection;
 
@@ -39,6 +40,7 @@ public class Options implements HasLongId, Serializable {
     public void setName (String name) {
         this.name = name;
     }
+    @JsonIgnore
     public Collection<ContractOptionRsp> getContractOptionRspsByOptionId(){
         return this.contractOptionRspsByOptionId;
     }
@@ -46,6 +48,7 @@ public class Options implements HasLongId, Serializable {
     public void setContractOptionRspsByOptionId (Collection<ContractOptionRsp> contractOptionRspsByOptionId) {
         this.contractOptionRspsByOptionId = contractOptionRspsByOptionId;
     }
+    @JsonIgnore
     public Collection<OptionRelationsRsp> getOptionRelationsRspsByOptionMainId(){
         return this.optionRelationsRspsByOptionMainId;
     }
@@ -53,6 +56,7 @@ public class Options implements HasLongId, Serializable {
     public void setOptionRelationsRspsByOptionMainId (Collection<OptionRelationsRsp> optionRelationsRspsByOptionMainId) {
         this.optionRelationsRspsByOptionMainId = optionRelationsRspsByOptionMainId;
     }
+    @JsonIgnore
     public Collection<OptionRelationsRsp> getOptionRelationsRspsByOptionSecondId(){
         return this.optionRelationsRspsByOptionSecondId;
     }
@@ -60,6 +64,7 @@ public class Options implements HasLongId, Serializable {
     public void setOptionRelationsRspsByOptionSecondId (Collection<OptionRelationsRsp> optionRelationsRspsByOptionSecondId) {
         this.optionRelationsRspsByOptionSecondId = optionRelationsRspsByOptionSecondId;
     }
+    @JsonIgnore
     public Collection<TariffOptionsRsp> getTariffOptionsRspsByTariffOptionId(){
         return this.tariffOptionsRspsByTariffOptionId;
     }

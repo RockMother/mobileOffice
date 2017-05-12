@@ -2,6 +2,7 @@ package mobileoffice.dao.entities;
 
 import base.dao.contracts.HasLongId;
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Collection;
 
@@ -46,6 +47,7 @@ public class Users implements HasLongId, Serializable {
     public void setEnabled (Boolean enabled) {
         this.enabled = enabled;
     }
+    @JsonIgnore
     public Collection<Authorities> getAuthoritiessByUserId(){
         return this.authoritiessByUserId;
     }
@@ -53,6 +55,7 @@ public class Users implements HasLongId, Serializable {
     public void setAuthoritiessByUserId (Collection<Authorities> authoritiessByUserId) {
         this.authoritiessByUserId = authoritiessByUserId;
     }
+    @JsonIgnore
     public Collection<Client> getClientsByUserId(){
         return this.clientsByUserId;
     }
@@ -60,6 +63,7 @@ public class Users implements HasLongId, Serializable {
     public void setClientsByUserId (Collection<Client> clientsByUserId) {
         this.clientsByUserId = clientsByUserId;
     }
+    @JsonIgnore
     public Collection<Manager> getManagersByUserId(){
         return this.managersByUserId;
     }

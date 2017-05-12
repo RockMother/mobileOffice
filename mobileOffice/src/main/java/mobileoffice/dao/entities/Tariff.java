@@ -1,8 +1,9 @@
 package mobileoffice.dao.entities;
 
 import base.dao.contracts.HasLongId;
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /*
@@ -37,6 +38,7 @@ public class Tariff implements HasLongId, Serializable {
     public void setPrice (Float price) {
         this.price = price;
     }
+    @JsonIgnore
     public Collection<Contract> getContractsByTariffId(){
         return this.contractsByTariffId;
     }
@@ -44,6 +46,7 @@ public class Tariff implements HasLongId, Serializable {
     public void setContractsByTariffId (Collection<Contract> contractsByTariffId) {
         this.contractsByTariffId = contractsByTariffId;
     }
+    @JsonIgnore
     public Collection<TariffOptionsRsp> getTariffOptionsRspsByTariffId(){
         return this.tariffOptionsRspsByTariffId;
     }
